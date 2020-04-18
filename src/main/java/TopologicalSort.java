@@ -18,7 +18,7 @@ class TopologicalSort
 
     void topologicalSort(Graph graph)
     {
-        var v = graph.getVertecicesCount();
+        var v = graph.getVerticesCount();
         Stack<Integer> stack = new Stack<>();
         boolean[] visited = new boolean[v];
         for (int i = 0; i < v; i++)

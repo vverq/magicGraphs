@@ -4,33 +4,22 @@ import java.util.ArrayList;
 class Graph
 {
     private int m_verticesCount;
-    private ArrayList m_adjacencyList;
-    private Integer[][] m_adjacencyMatrix;
+    private ArrayList<ArrayList<Integer>> m_adjacencyList;
+    private boolean[][] m_adjacencyMatrix;
 
-    Graph(ArrayList adjacencyList, Integer[][] adjacencyMatrix)
+    Graph(ArrayList<ArrayList<Integer>> adjacencyList, boolean[][] adjacencyMatrix)
     {
         m_adjacencyList = adjacencyList;
         m_adjacencyMatrix = adjacencyMatrix;
+        m_verticesCount = adjacencyList.size();
     }
 
-    int getVertecicesCount()
+    public int getVerticesCount()
     {
         return m_verticesCount;
     }
 
-    Integer[][] getAdjacencyMatrix()
-    {
-        if (m_adjacencyMatrix != null)
-        {
-            m_verticesCount = m_adjacencyMatrix.length;
-            return m_adjacencyMatrix;
-        }
-        return AdjacencylistToMatrix(m_adjacencyList);
-    }
+    public boolean[][] getAdjacencyMatrix() { return m_adjacencyMatrix; }
 
-    private Integer[][] AdjacencylistToMatrix(ArrayList m_adjacencyList)
-    {
-        // TODO: реализовать метод, который превращал бы список смежности в матрицу смежности
-        return null;
-    }
+    public ArrayList<ArrayList<Integer>> getAdjacencyList() { return m_adjacencyList; }
 }

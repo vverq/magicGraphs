@@ -8,8 +8,8 @@ public class ComponentSearch
     private ArrayList<ArrayList> components = new ArrayList<>();
     public ArrayList<ArrayList> componentSearch(Graph graph)
     {
-        Integer[][] adjacencyMatrix = graph.getAdjacencyMatrix();
-        int verticesCount = graph.getVertecicesCount();
+        boolean[][] adjacencyMatrix = graph.getAdjacencyMatrix();
+        int verticesCount = graph.getVerticesCount();
         HashSet<Integer> unvisitedVertices = new HashSet<>();
         for (int i = 0; i < verticesCount; i++)
         {
@@ -29,7 +29,7 @@ public class ComponentSearch
             unvisitedVertices.remove(currentVertex);
             while (vertex < verticesCount)
             {
-                if (adjacencyMatrix[currentVertex][vertex].equals(1))
+                if (adjacencyMatrix[currentVertex][vertex])
                 {
                     if (unvisitedVertices.contains(vertex))
                     {
@@ -46,10 +46,10 @@ public class ComponentSearch
 
     public static void main(String[] args)
     {
-        Integer[][] matrix = new Integer[2][2];
-        for (Integer[] integers : matrix)
+        boolean[][] matrix = new boolean[2][2];
+        for (boolean[] booleans : matrix)
         {
-            Arrays.fill(integers, 0);
+            Arrays.fill(booleans, false);
         }
         var graph1 = new Graph(null, matrix);
         var c = new ComponentSearch();
