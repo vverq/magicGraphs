@@ -1,38 +1,58 @@
 import java.util.*;
+
+
 class TopologicalSort
 {
-    private LinkedList<Integer> adj[];
-    void addEdge(int v,int w) { adj[v].add(w); } //need refactoring
-
-    private void topologicalSortUtil(int v, boolean visited[], Stack<Integer> stack)
+    private static void topologicalSortUtil(LinkedList[] adj, int v, boolean visited[], Stack stack)
     {
         visited[v] = true;
         Integer i;
-        for (Integer integer : adj[v]) {
+        for (Integer integer : (Iterable<Integer>) adj[v])
+        {
             i = integer;
             if (!visited[i])
-                topologicalSortUtil(i, visited, stack);
+                topologicalSortUtil(adj, i, visited, stack);
         }
         stack.push(v);
     }
 
-    void topologicalSort(Graph graph)
+    private static void topologicalSort(Graph graph)
     {
-        var v = graph.getVertecicesCount();
-        Stack<Integer> stack = new Stack<>();
+        Stack stack = new Stack();
+        int v = graph.getVerticicesCount();
         boolean[] visited = new boolean[v];
         for (int i = 0; i < v; i++)
+        {
             visited[i] = false;
+        }
         for (int i = 0; i < v; i++)
+        {
             if (!visited[i])
-                topologicalSortUtil(i, visited, stack);
-        while (!stack.empty())
-            System.out.print(stack.pop() + " ");
-    }
+            {
+                topologicalSortUtil(graph.getAdjacencyList(), i, visited, stack);
+            }
+        }
 
+        // TODO: Вывод результатов топологической сортировки, потом заменим тело цикла на что-то нужное
+        while (!stack.empty())
+        {
+            System.out.print(stack.pop() + " ");
+        }
+    }
 
 //    public static void main(String args[])
 //    {
-//        g.topologicalSort();
+//        LinkedList[] adj = new LinkedList[6];
+//        for (int i=0; i<=5; ++i)
+//            adj[i] = new LinkedList();
+//        adj[5].add(2);
+//        adj[5].add(0);
+//        adj[4].add(0);
+//        adj[4].add(1);
+//        adj[2].add(3);
+//        adj[3].add(1);
+//
+//        Graph g = new Graph(6, adj, null);
+//        TopologicalSort.topologicalSort(g);
 //    }
 }

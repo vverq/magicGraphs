@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 
@@ -8,8 +7,8 @@ public class ComponentSearch
     private ArrayList<ArrayList> components = new ArrayList<>();
     public ArrayList<ArrayList> componentSearch(Graph graph)
     {
-        Integer[][] adjacencyMatrix = graph.getAdjacencyMatrix();
-        int verticesCount = graph.getVertecicesCount();
+        int[][] adjacencyMatrix = graph.getAdjacencyMatrix();
+        int verticesCount = graph.getVerticicesCount();
         HashSet<Integer> unvisitedVertices = new HashSet<>();
         for (int i = 0; i < verticesCount; i++)
         {
@@ -29,7 +28,7 @@ public class ComponentSearch
             unvisitedVertices.remove(currentVertex);
             while (vertex < verticesCount)
             {
-                if (adjacencyMatrix[currentVertex][vertex].equals(1))
+                if (adjacencyMatrix[currentVertex][vertex] == 1)
                 {
                     if (unvisitedVertices.contains(vertex))
                     {
@@ -44,16 +43,15 @@ public class ComponentSearch
         return components;
     }
 
-    public static void main(String[] args)
-    {
-        Integer[][] matrix = new Integer[2][2];
-        for (Integer[] integers : matrix)
-        {
-            Arrays.fill(integers, 0);
-        }
-        var graph1 = new Graph(null, matrix);
-        var c = new ComponentSearch();
-        System.out.println(c.componentSearch(graph1));
-    }
-
+//    public static void main(String[] args)
+//    {
+//        Integer[][] matrix = new Integer[2][2];
+//        for (Integer[] integers : matrix)
+//        {
+//            Arrays.fill(integers, 0);
+//        }
+//        var graph1 = new Graph(null, matrix);
+//        var c = new ComponentSearch();
+//        System.out.println(c.componentSearch(graph1));
+//    }
 }

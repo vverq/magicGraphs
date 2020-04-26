@@ -1,14 +1,14 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Stack;
 
-public class BipartitenessTester {
+public class BipartitenessChecking
+{
 
     public boolean checkGraph(Graph graph) {
         return getPartition(graph) != null;
     }
 
-    public int[] getPartition(Graph graph) {
+    private int[] getPartition(Graph graph) {
         var adjacencyMatrix = graph.getAdjacencyMatrix();
         var stack = new Stack<Integer>();
         stack.push(0);
@@ -30,7 +30,7 @@ public class BipartitenessTester {
                 return values;
         }
     }
-    private boolean check(Integer[][] adjacencyMatrix, int[] values, Stack<Integer> stack) {
+    private boolean check(int[][] adjacencyMatrix, int[] values, Stack<Integer> stack) {
         while (!stack.empty()) {
             var currentTop = stack.peek();
             if (values[currentTop] == -1)

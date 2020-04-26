@@ -1,24 +1,57 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 
 class Graph
 {
     private int m_verticesCount;
-    private ArrayList m_adjacencyList;
-    private Integer[][] m_adjacencyMatrix;
+    private int m_edgesCount;
+    private Edge[] m_edges;
+    private LinkedList[] m_adjacencyList;
+    private int[][] m_adjacencyMatrix;
 
-    Graph(ArrayList adjacencyList, Integer[][] adjacencyMatrix)
+    Graph(int verticesCount, LinkedList[] adjacencyList, int[][] adjacencyMatrix)
     {
+        m_verticesCount = verticesCount;
         m_adjacencyList = adjacencyList;
         m_adjacencyMatrix = adjacencyMatrix;
     }
 
-    int getVertecicesCount()
+    Graph(int verticesCount, int edgesCount)
+    {
+        m_verticesCount = verticesCount;
+        m_edgesCount = edgesCount;
+        m_edges = new Edge[m_edgesCount];
+        for (int i = 0; i < m_edgesCount; ++i)
+            m_edges[i] = new Edge();
+    }
+
+    Graph(int[][] adjacencyMatrix)
+    {
+        m_adjacencyMatrix = adjacencyMatrix;
+        m_verticesCount = adjacencyMatrix.length;
+    }
+
+    int getVerticicesCount()
     {
         return m_verticesCount;
     }
 
-    Integer[][] getAdjacencyMatrix()
+    int getEdgesCount()
+    {
+        return m_edgesCount;
+    }
+
+    Edge[] getM_edges()
+    {
+        return m_edges;
+    }
+
+    void setEdges(Edge[] edges)
+    {
+        m_edges = edges;
+    }
+
+    int[][] getAdjacencyMatrix()
     {
         if (m_adjacencyMatrix != null)
         {
@@ -28,9 +61,16 @@ class Graph
         return AdjacencylistToMatrix(m_adjacencyList);
     }
 
-    private Integer[][] AdjacencylistToMatrix(ArrayList m_adjacencyList)
+    LinkedList[] getAdjacencyList()
+    {
+        return m_adjacencyList;
+    }
+
+    private int[][] AdjacencylistToMatrix(LinkedList[] m_adjacencyList)
     {
         // TODO: реализовать метод, который превращал бы список смежности в матрицу смежности
         return null;
     }
 }
+
+;
