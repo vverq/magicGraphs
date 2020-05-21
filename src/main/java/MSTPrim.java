@@ -57,7 +57,9 @@ public class MSTPrim
 //                { 6, 8, 0, 0, 9 },
 //                { 0, 5, 7, 9, 0 }
 //        };
-//        Graph graph = new Graph(adjMatrix);
+//        Graph graph = new Graph(5, 7);
+//        //ребра еще добавить
+//        graph.setWeightMatrix(adjMatrix);
 //        new MSTPrim().primMST(graph);
 //    }
 }

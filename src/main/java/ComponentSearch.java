@@ -1,56 +1,56 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
+import java.util.*;
 
-public class ComponentSearch
-{
+public class ComponentSearch {
     private ArrayList<ArrayList> components = new ArrayList<>();
-    public ArrayList<ArrayList> componentSearch(Graph graph)
-    {
-        int[][] adjacencyMatrix = graph.getWeightMatrix();
+    private int componentCount = 0;
+    ArrayList<ArrayList> componentSearch(Graph graph) {
         int verticesCount = graph.getVerticesCount();
+        boolean[][] matrix = graph.getAdjacencyMatrix();
+        int currentVertex = 0;
+        LinkedList<Integer> verticesToVisit = new LinkedList<>();
         HashSet<Integer> unvisitedVertices = new HashSet<>();
-        for (int i = 0; i < verticesCount; i++)
-        {
+        ArrayList<Integer> componentVertices = new ArrayList<>();
+        for (int i = 0; i < verticesCount; i++){
             unvisitedVertices.add(i);
         }
-        HashSet<Integer> verticesToVisit = new HashSet<>();
-        while (true)
-        {
-            ArrayList<Integer> vertexComponent = new ArrayList<>();
-            int vertex = 0;
-            if (unvisitedVertices.isEmpty())
-            {
-                break;
-            }
-            int currentVertex = Collections.min(unvisitedVertices);
-            vertexComponent.add(currentVertex);
+        while (true) {
+            int i = 0;
             unvisitedVertices.remove(currentVertex);
-            while (vertex < verticesCount)
-            {
-                if (adjacencyMatrix[currentVertex][vertex] == 1)
-                {
-                    if (unvisitedVertices.contains(vertex))
-                    {
-                        verticesToVisit.add(vertex);
-                        vertexComponent.add(currentVertex);
+            componentVertices.add(currentVertex);
+            while (i < verticesCount){
+                if (matrix[currentVertex][i]) {
+                    if (unvisitedVertices.contains(i)) {
+                        verticesToVisit.add(i);
                     }
                 }
-                vertex += 1;
+                i += 1;
             }
-            components.add(vertexComponent);
+            if (verticesToVisit.size() == 0) {
+                componentCount += 1;
+                components.add(componentVertices);
+                componentVertices = new ArrayList<>();
+                if (unvisitedVertices.size() == 0) {
+                    break;
+                }
+                currentVertex = Collections.min(unvisitedVertices);
+            }
+            else {
+                currentVertex = verticesToVisit.pop();
+            }
         }
         return components;
     }
 
 //    public static void main(String[] args)
 //    {
-//        Integer[][] matrix = new Integer[2][2];
-//        for (Integer[] integers : matrix)
-//        {
-//            Arrays.fill(integers, 0);
-//        }
-//        var graph1 = new Graph(null, matrix);
+//        boolean[][] matrix = new boolean[][]{
+//                new boolean[]{false, true, false, false},
+//                new boolean[]{true, false, true, false},
+//                new boolean[]{false, true, false, false},
+//                new boolean[]{false, false, false, false}
+//        };
+//
+//        var graph1 = new Graph(matrix);
 //        var c = new ComponentSearch();
 //        System.out.println(c.componentSearch(graph1));
 //    }

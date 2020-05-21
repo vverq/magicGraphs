@@ -3,7 +3,7 @@ import javafx.util.Pair;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-class Graph
+public class Graph
 {
     private int m_verticesCount;
     private int m_edgesCount;
@@ -11,7 +11,7 @@ class Graph
     private boolean[][] m_adjacencyMatrix;
     private int[][] m_weightMatrix;
 
-    Graph(boolean[][] adjacencyMatrix)
+    public Graph(boolean[][] adjacencyMatrix)
     {
         m_verticesCount = adjacencyMatrix.length;
         m_adjacencyMatrix = adjacencyMatrix;
@@ -37,14 +37,14 @@ class Graph
     }
 
     public static Edge[] adjacencyMatrixToEdges(boolean[][] adjacencyMatrix, int[][] weightMatrix) {
-        var edges = new ArrayList<Edge>();
+        var edges = new Edge[adjacencyMatrix.length];
         for (var i = 0; i < adjacencyMatrix.length; i++) {
             for (var j = 0; j < adjacencyMatrix.length; j++) {
                 if (adjacencyMatrix[i][j])
-                    edges.add(new Edge(i, j, weightMatrix[i][j]));
+                    edges[i] = (new Edge(i, j, weightMatrix[i][j]));
             }
         }
-        return (Edge[])edges.toArray();
+        return edges;
     }
 
     public static Pair<boolean[][], int[][]> edgesToAdjacencyAndWeightMatrix(
@@ -112,7 +112,4 @@ class Graph
         }
         return adjacencyListsFrom;
     }
-
 }
-
-;

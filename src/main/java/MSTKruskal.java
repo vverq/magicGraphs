@@ -58,8 +58,8 @@ public class MSTKruskal
         while (j < V - 1)
         {
             Edge next_edge = graph.getM_edges()[i++];
-            int x = find(subsets, next_edge.source);
-            int y = find(subsets, next_edge.destination);
+            int x = find(subsets, next_edge.getSource());
+            int y = find(subsets, next_edge.getDestination());
             if (x != y)
             {
                 result[j++] = next_edge;
@@ -69,8 +69,8 @@ public class MSTKruskal
 
         // TODO: Вывод получившегося минимального остовного дерева, потом заменить тело цикла на что-то нужное
         for (i = 0; i < j; ++i)
-            System.out.println(result[i].source + " -- " +
-                    result[i].destination + " == " + result[i].weight);
+            System.out.println(result[i].getSource() + " -- " +
+                    result[i].getDestination() + " == " + result[i].getWeight());
     }
 
 //    public static void main(String[] args)

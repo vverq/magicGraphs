@@ -3,11 +3,11 @@ import java.util.*;
 
 class TopologicalSort
 {
-    private static void topologicalSortUtil(LinkedList[] adj, int v, boolean visited[], Stack stack)
+    private static void topologicalSortUtil(LinkedList<LinkedList<Integer>> adj, int v, boolean visited[], Stack stack)
     {
         visited[v] = true;
         Integer i;
-        for (Integer integer : (Iterable<Integer>) adj[v])
+        for (Integer integer : (Iterable<Integer>) adj.get(v))
         {
             i = integer;
             if (!visited[i])
@@ -29,7 +29,7 @@ class TopologicalSort
         {
             if (!visited[i])
             {
-                topologicalSortUtil(graph.getAdjacencyListTo(), i, visited, stack);
+                topologicalSortUtil(graph.getAdjacencyLists(), i, visited, stack);
             }
         }
         // TODO: Вывод результатов топологической сортировки, потом заменим тело цикла на что-то нужное
@@ -41,17 +41,8 @@ class TopologicalSort
 
 //    public static void main(String args[])
 //    {
-//        LinkedList[] adj = new LinkedList[6];
-//        for (int i=0; i<=5; ++i)
-//            adj[i] = new LinkedList();
-//        adj[5].add(2);
-//        adj[5].add(0);
-//        adj[4].add(0);
-//        adj[4].add(1);
-//        adj[2].add(3);
-//        adj[3].add(1);
-//
-//        Graph g = new Graph(6, adj, null);
+//        Graph g = new Graph(6, 6);
+//        g.setEdges(new Edge[]{new Edge(5, 2), new Edge(5, 0), new Edge(4, 0), new Edge(4, 1), new Edge(2, 3), new Edge(3,1)});
 //        TopologicalSort.topologicalSort(g);
 //    }
 }

@@ -50,16 +50,16 @@ public class MSTBoruvka
             for (int i = 0; i < graph.getEdgesCount(); i++)
             {
                 Edge next_edge = graph.getM_edges()[i];
-                int w = next_edge.weight;
-                int x = find(subsets, next_edge.source);
-                int y = find(subsets, next_edge.destination);
+                int w = next_edge.getWeight();
+                int x = find(subsets, next_edge.getSource());
+                int y = find(subsets, next_edge.getDestination());
                 if (x != y)
                 {
-                    if ((result[x].source == -1 && result[x].destination == -1) || result[x].weight > w)
+                    if ((result[x].getSource() == -1 && result[x].getDestination() == -1) || result[x].getWeight() > w)
                     {
                         result[x] = next_edge;
                     }
-                    if ((result[y].source == -1 && result[y].destination == -1) || result[y].weight > w)
+                    if ((result[y].getSource() == -1 && result[y].getDestination() == -1) || result[y].getWeight() > w)
                     {
                         result[y] = next_edge;
                     }
@@ -67,18 +67,18 @@ public class MSTBoruvka
             }
             for (int i = 0; i < V; i++)
             {
-                if (result[i].source != -1 && result[i].destination != -1)
+                if (result[i].getSource() != -1 && result[i].getDestination() != -1)
                 {
                     Edge edge = result[i];
-                    var x = find(subsets, edge.source);
-                    var y = find(subsets, edge.destination);
+                    var x = find(subsets, edge.getSource());
+                    var y = find(subsets, edge.getDestination());
                     if (x != y)
                     {
                         union(subsets, x, y);
                         numTrees -= 1;
                         // TODO: Вывод получившегося минимального остовного дерева, потом заменить тело цикла на что-то нужное
-                        System.out.println(result[i].source + " -- " +
-                                result[i].destination + " == " + result[i].weight);
+                        System.out.println(result[i].getSource() + " -- " +
+                                result[i].getDestination() + " == " + result[i].getWeight());
                     }
                 }
             }

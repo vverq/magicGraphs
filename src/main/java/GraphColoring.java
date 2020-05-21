@@ -1,10 +1,10 @@
 public class GraphColoring
 {
-    private boolean isCorrect(int v, int graph[][], int color[], int c)
+    private boolean isCorrect(int v, boolean graph[][], int color[], int c)
     {
         for (int i = 0; i < graph.length; i++)
         {
-            if (graph[v][i] == 1 && c == color[i])
+            if (graph[v][i] && c == color[i])
             {
                 return false;
             }
@@ -12,7 +12,7 @@ public class GraphColoring
         return true;
     }
 
-    private boolean graphColoringUtil(int graph[][], int m, int color[], int v)
+    private boolean graphColoringUtil(boolean graph[][], int m, int color[], int v)
     {
         if (v == graph.length)
         {
@@ -34,35 +34,36 @@ public class GraphColoring
         return false;
     }
 
-    private void graphColoring(Graph graph)
+    private int[] graphColoring(Graph graph)
     {
         int V = graph.getVerticesCount();
-        int[][] matrix = graph.getWeightMatrix();
+        boolean[][] matrix = graph.getAdjacencyMatrix();
         int[] color = new int[V];
         for (int i = 0; i < V; i++)
         {
             color[i] = 0;
         }
-        if (!graphColoringUtil(matrix, V, color, 0))
-        {
-            // TODO: кинуть варнинг ноу солюшен
-            System.out.println("Нет решения");
-            return;
-        }
-        // TODO: вывод раскраски, потом заменить нужное
-        for (int i = 0; i < V; i++)
-        {
-            System.out.print(" " + color[i] + " ");
-        }
+        return color;
+//        if (!graphColoringUtil(matrix, V, color, 0))
+//        {
+//            // TODO: кинуть варнинг ноу солюшен
+//            System.out.println("Нет решения");
+//            return;
+//        }
+//        // TODO: вывод раскраски, потом заменить нужное
+//        for (int i = 0; i < V; i++)
+//        {
+//            System.out.print(" " + color[i] + " ");
+//        }
     }
 
 //    public static void main(String[] args)
 //    {
-//        int[][] adjMatrix = {
-//                {0, 1, 1, 1},
-//                {1, 0, 1, 0},
-//                {1, 1, 0, 1},
-//                {1, 0, 1, 0},
+//        boolean[][] adjMatrix = {
+//                {false, true, true, false},
+//                {true, false, true, false},
+//                {true, true, false, true},
+//                {true, false, true, false},
 //        };
 //        Graph graph = new Graph(adjMatrix);
 //        new GraphColoring().graphColoring(graph);

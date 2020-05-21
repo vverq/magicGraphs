@@ -1,8 +1,8 @@
 public class HamiltonianCycle
 {
-    private boolean isCorrect(int v, int graph[][], int cycle[], int current)
+    private boolean isCorrect(int v, boolean graph[][], int cycle[], int current)
     {
-        if (graph[cycle[current - 1]][v] == 0)
+        if (!graph[cycle[current - 1]][v])
         {
             return false;
         }
@@ -16,11 +16,11 @@ public class HamiltonianCycle
         return true;
     }
 
-    private boolean hamiltonianCycleUtil(int[][] matrix, int[] cycle, int current, int V)
+    private boolean hamiltonianCycleUtil(boolean[][] matrix, int[] cycle, int current, int V)
     {
         if (current == V)
         {
-            return matrix[cycle[current - 1]][cycle[0]] == 1;
+            return matrix[cycle[current - 1]][cycle[0]];
         }
 
         for (int v = 1; v < V; v++)
@@ -40,7 +40,7 @@ public class HamiltonianCycle
 
     private void hamiltonianCycle(Graph graph)
     {
-        int[][] matrix = graph.getWeightMatrix();
+        boolean[][] matrix = graph.getAdjacencyMatrix();
         int V = graph.getVerticesCount();
         int[] cycle = new int[V];
         for (int i = 0; i < V; i++)
@@ -65,12 +65,12 @@ public class HamiltonianCycle
 
 //    public static void main(String args[])
 //    {
-//        int[][] adjMatrix = {
-//                {0, 1, 0, 1, 0},
-//                {1, 0, 1, 1, 1},
-//                {0, 1, 0, 0, 1},
-//                {1, 1, 0, 0, 1},
-//                {0, 1, 1, 1, 0},
+//        boolean[][] adjMatrix = {
+//                {false, true, false, true, false},
+//                {true, false, true, true, true},
+//                {false, true, false, false, true},
+//                {true, true, false, false, true},
+//                {false, true, true, true, false},
 //        };
 //        Graph graph = new Graph(adjMatrix);
 //        new HamiltonianCycle().hamiltonianCycle(graph);
