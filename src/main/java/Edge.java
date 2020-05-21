@@ -1,8 +1,8 @@
 class Edge implements Comparable<Edge>
 {
-    int source;
-    int destination;
-    int weight;
+    private int source;
+    private int destination;
+    private int weight;
 
     Edge(int src, int dst, int w)
     {
@@ -11,10 +11,26 @@ class Edge implements Comparable<Edge>
         weight = w;
     }
 
+    Edge(int src, int dst)
+    {
+        source = src;
+        destination = dst;
+    }
+
     Edge()
     {
         source = -1;
         destination = -1;
+    }
+
+    public void setWeight(int w) {weight = w; }
+
+    public int getWeight() { return weight; }
+
+    public int getSource() { return source; }
+
+    public int getDestination() {
+        return destination;
     }
 
     public int compareTo(Edge compareEdge)

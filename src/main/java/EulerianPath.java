@@ -2,13 +2,13 @@ import java.util.LinkedList;
 import java.util.Stack;
 
 public class EulerianPath {
-    public static boolean isGraphEulerian(Graph graph) {
+    public static boolean isGraphEulerian(UndirectedGraph graph) {
         var compSearch = new ComponentSearch();
         if (graph.getVerticesCount() == 1 || compSearch.componentSearch(graph).size() > 1) {
             return false;
         }
         for (var v = 0; v < graph.getVerticesCount(); v++) {
-            if (graph.getAdjacencyList()[v].size() % 2 == 1)
+            if (graph.getAdjacencyLists().get(v).size() % 2 == 1)
                 return false;
         }
         return true;
@@ -20,7 +20,7 @@ public class EulerianPath {
         sWork.push(start);
         LinkedList<Integer>[] listW = new LinkedList[graph.getVerticesCount()];
         for (var v = 0; v < graph.getVerticesCount(); v++) {
-            listW[v] = (LinkedList<Integer>) graph.getAdjacencyList()[v].clone();
+            listW[v] = (LinkedList<Integer>) graph.getAdjacencyLists().get(v).clone();
         }
         while (!sWork.isEmpty()) {
             var v = sWork.get(sWork.size() - 1);

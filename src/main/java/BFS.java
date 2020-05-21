@@ -1,6 +1,4 @@
 import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Queue;
 
 public class BFS {
     public static int[] BFS(Graph graph, int start) {
@@ -15,7 +13,7 @@ public class BFS {
             i++;
             while (!Q.isEmpty()) {
                 var u = Q.pollFirst();
-                for (Integer w : graph.getAdjacencyList()[u]) {
+                for (Integer w : graph.getAdjacencyLists().get(u)) {
                     if (num[w] == 0) {
                         Q.addLast(w);
                         father[w] = u;

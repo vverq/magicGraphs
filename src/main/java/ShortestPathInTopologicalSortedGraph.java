@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 import java.util.Stack;
 
 public class ShortestPathInTopologicalSortedGraph {
@@ -40,8 +41,14 @@ public class ShortestPathInTopologicalSortedGraph {
         for (var k = 2; k <= graph.getVerticesCount(); k++) {
             distances[sortedVertices[k]] = Integer.MAX_VALUE;
         }
+        LinkedList<LinkedList<Integer>> adjacencyListFrom;
+        if (graph instanceof DirectedGraph)
+            adjacencyListFrom = ((DirectedGraph) graph).getAdjacencyListsFrom();
+        else
+            adjacencyListFrom = graph.getAdjacencyLists();
+
         for (var k = 2; k <= graph.getVerticesCount(); k++) {
-            for (Integer w : graph.getAdjacencyListTo(sortedVertices[k])) {
+            for (Integer w : adjacencyListFrom.get(sortedVertices[k])) {
                 if (distances[w] + weightMatrix[w][sortedVertices[k]] < distances[sortedVertices[k]]) {
                     distances[sortedVertices[k]] = distances[w] + weightMatrix[w][sortedVertices[k]];
                     previous[sortedVertices[k]] = w;

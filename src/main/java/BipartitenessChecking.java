@@ -4,7 +4,7 @@ import java.util.Stack;
 public class BipartitenessChecking
 {
 
-    public boolean checkGraph(Graph graph) {
+    public boolean checkGraph(UndirectedGraph graph) {
         return getPartition(graph) != null;
     }
 

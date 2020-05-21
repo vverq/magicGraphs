@@ -17,12 +17,12 @@ public class DFS
         {
             int v = stack.firstElement();
             stack.pop();
-            for (int i = 0; i < graph.getAdjacencyList()[v].size(); ++i)
+            for (int i = 0; i < graph.getAdjacencyListTo()[v].size(); ++i)
             {
-                if (mark[(int) graph.getAdjacencyList()[v].get(i)])
+                if (mark[(int) graph.getAdjacencyListTo()[v].get(i)])
                 {
-                    stack.push((Integer) graph.getAdjacencyList()[v].get(i));
-                    mark[(int) graph.getAdjacencyList()[v].get(i)] = false;
+                    stack.push((Integer) graph.getAdjacencyListTo()[v].get(i));
+                    mark[(int) graph.getAdjacencyListTo()[v].get(i)] = false;
                 }
             }
         }

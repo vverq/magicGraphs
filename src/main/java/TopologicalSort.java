@@ -29,7 +29,7 @@ class TopologicalSort
         {
             if (!visited[i])
             {
-                topologicalSortUtil(graph.getAdjacencyList(), i, visited, stack);
+                topologicalSortUtil(graph.getAdjacencyListTo(), i, visited, stack);
             }
         }
         // TODO: Вывод результатов топологической сортировки, потом заменим тело цикла на что-то нужное
