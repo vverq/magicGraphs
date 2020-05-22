@@ -1,5 +1,9 @@
+package graph;
+
+import graph.Graph;
+
 public class UndirectedGraph extends Graph {
-    UndirectedGraph(boolean[][] adjacencyMatrix) {
+    public UndirectedGraph(boolean[][] adjacencyMatrix) {
         super(adjacencyMatrix);
     }
 

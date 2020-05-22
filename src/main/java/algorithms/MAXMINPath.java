@@ -1,8 +1,12 @@
+package algorithms;
+
+import graph.Graph;
+
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class DijkstraAlgorithm {
-    public static Stack<Integer> getShortestPath(Graph graph, int s, int t) {
+public class MAXMINPath {
+    public static Stack<Integer> getMAXMINPath(Graph graph, int s, int t) {
         var distances = new int[graph.getVerticesCount()];
         var previous = new int[graph.getVerticesCount()];
         distance(graph, s, distances, previous);
@@ -31,41 +35,32 @@ public class DijkstraAlgorithm {
                 continue;
             F.add(v);
         }
-        for (Integer v : F) {
-            if (v == s)
-                continue;
-            if (adjacencyMatrix[s][v])
-                distances[v] = weightMatrix[s][v];
-            else {
-                distances[v] = Integer.MAX_VALUE;
-                continue;
-            }
-            previous[v] = s;
-        }
+        var S = new ArrayList<Integer>();
+        S.add(s);
+        distances[s] = Integer.MAX_VALUE;
         for (var k = 0; k < graph.getVerticesCount() - 1; k++) {
-            var w = min(F, distances);
-            F.remove(w);
-            for (Integer v : F) {
-                if (!adjacencyMatrix[w][v]) {
-                    continue;
-                }
-                if (distances[w] + weightMatrix[w][v] < distances[v]) {
-                    distances[v] = distances[w] + weightMatrix[w][v];
-                    previous[v] = w;
+            for (Integer w : F) {
+                distances[w] = 0;
+                for (Integer v : S) {
+                    if (!adjacencyMatrix[v][w])
+                        continue;
+                    var value = Math.min(distances[v], weightMatrix[v][w]);
+                    if (value > distances[w]) {
+                        distances[w] = value;
+                        previous[w] = v;
+                    }
                 }
             }
-        }
-    }
-
-    private static int min(ArrayList<Integer> F, int[] distances) {
-        var minValue = Integer.MAX_VALUE;
-        var min = -1;
-        for (Integer w : F) {
-            if (distances[w] < minValue) {
-                minValue = distances[w];
-                min = w;
+            var maxW = 0;
+            var maxWValue = -1;
+            for (Integer w : F) {
+                if (distances[w] > maxWValue) {
+                    maxW = w;
+                    maxWValue = distances[w];
+                }
             }
+            F.remove(maxW);
+            S.add(maxW);
         }
-        return min;
     }
 }

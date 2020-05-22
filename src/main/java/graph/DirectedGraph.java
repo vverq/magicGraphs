@@ -1,3 +1,5 @@
+package graph;
+
 import java.util.LinkedList;
 
 public class DirectedGraph extends Graph {

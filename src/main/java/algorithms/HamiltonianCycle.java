@@ -1,3 +1,7 @@
+package algorithms;
+
+import graph.Graph;
+
 public class HamiltonianCycle
 {
     private boolean isCorrect(int v, boolean graph[][], int cycle[], int current)
@@ -72,7 +76,7 @@ public class HamiltonianCycle
 //                {true, true, false, false, true},
 //                {false, true, true, true, false},
 //        };
-//        Graph graph = new Graph(adjMatrix);
-//        new HamiltonianCycle().hamiltonianCycle(graph);
+//        graph.Graph graph = new graph.Graph(adjMatrix);
+//        new algorithms.HamiltonianCycle().hamiltonianCycle(graph);
 //    }
 }

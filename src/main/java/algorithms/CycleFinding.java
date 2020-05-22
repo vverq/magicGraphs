@@ -1,3 +1,7 @@
+package algorithms;
+
+import graph.Graph;
+
 import java.util.ArrayList;
 import java.util.Stack;
 

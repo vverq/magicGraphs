@@ -1,3 +1,9 @@
+package algorithms;
+
+import algorithms.ComponentSearch;
+import graph.Graph;
+import graph.UndirectedGraph;
+
 import java.util.LinkedList;
 import java.util.Stack;
 

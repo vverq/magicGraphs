@@ -1,3 +1,8 @@
+package algorithms;
+
+import graph.Edge;
+import graph.Graph;
+
 public class MSTBoruvka
 {
     private int find(Integer[][] subsets, int i)
@@ -87,16 +92,16 @@ public class MSTBoruvka
 
 //    public static void main(String[] string)
 //    {
-//        Graph graph = new Graph(4,5);
-//        Edge[] edges = new Edge[]
+//        graph.Graph graph = new graph.Graph(4,5);
+//        graph.Edge[] edges = new graph.Edge[]
 //        {
-//            new Edge(0, 1, 10),
-//            new Edge(0, 2, 6),
-//            new Edge(0, 3, 5),
-//            new Edge(1, 3, 15),
-//            new Edge(2, 3, 4),
+//            new graph.Edge(0, 1, 10),
+//            new graph.Edge(0, 2, 6),
+//            new graph.Edge(0, 3, 5),
+//            new graph.Edge(1, 3, 15),
+//            new graph.Edge(2, 3, 4),
 //        };
 //        graph.setEdges(edges);
-//        new MSTBoruvka().BoruvkaMST(graph);
+//        new algorithms.MSTBoruvka().BoruvkaMST(graph);
 //    }
 }

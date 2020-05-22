@@ -1,8 +1,11 @@
-import java.util.ArrayList;
+package algorithms;
+
+import graph.Graph;
+
 import java.util.Stack;
 
-public class MAXMINPath {
-    public static Stack<Integer> getMAXMINPath(Graph graph, int s, int t) {
+public class BellmanFordAlgorithm {
+    public static Stack<Integer> getShortestPath(Graph graph, int s, int t) {
         var distances = new int[graph.getVerticesCount()];
         var previous = new int[graph.getVerticesCount()];
         distance(graph, s, distances, previous);
@@ -25,38 +28,28 @@ public class MAXMINPath {
         var weightMatrix = graph.getWeightMatrix();
         var adjacencyMatrix = graph.getAdjacencyMatrix();
         previous[s] = -1;
-        var F = new ArrayList<Integer>();
         for (var v = 0; v < graph.getVerticesCount(); v++) {
             if (v == s)
                 continue;
-            F.add(v);
+            if (adjacencyMatrix[s][v])
+                distances[v] = weightMatrix[s][v];
+            else
+                distances[v] = Integer.MAX_VALUE;
+            previous[v] = s;
         }
-        var S = new ArrayList<Integer>();
-        S.add(s);
-        distances[s] = Integer.MAX_VALUE;
-        for (var k = 0; k < graph.getVerticesCount() - 1; k++) {
-            for (Integer w : F) {
-                distances[w] = 0;
-                for (Integer v : S) {
-                    if (!adjacencyMatrix[v][w])
+        for (var k = 0; k < graph.getVerticesCount() - 2; k++) {
+            for (var v = 0; v < graph.getVerticesCount(); v++) {
+                if (v == s)
+                    continue;
+                for (var w = 0; w < graph.getVerticesCount(); w++) {
+                    if (!adjacencyMatrix[w][v])
                         continue;
-                    var value = Math.min(distances[v], weightMatrix[v][w]);
-                    if (value > distances[w]) {
-                        distances[w] = value;
+                    if (distances[w] + weightMatrix[w][v] < distances[v]) {
+                        distances[v] = distances[w] + weightMatrix[w][v];
                         previous[w] = v;
                     }
                 }
             }
-            var maxW = 0;
-            var maxWValue = -1;
-            for (Integer w : F) {
-                if (distances[w] > maxWValue) {
-                    maxW = w;
-                    maxWValue = distances[w];
-                }
-            }
-            F.remove(maxW);
-            S.add(maxW);
         }
     }
 }

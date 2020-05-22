@@ -1,3 +1,8 @@
+package algorithms;
+
+import graph.DirectedGraph;
+import graph.Graph;
+
 import java.util.LinkedList;
 import java.util.Stack;
 

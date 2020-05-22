@@ -1,3 +1,7 @@
+package algorithms;
+
+import graph.Graph;
+
 public class MSTPrim
 {
     private int minKey(int[] key, boolean[] mstSet, int V)
@@ -57,9 +61,9 @@ public class MSTPrim
 //                { 6, 8, 0, 0, 9 },
 //                { 0, 5, 7, 9, 0 }
 //        };
-//        Graph graph = new Graph(5, 7);
+//        graph.Graph graph = new graph.Graph(5, 7);
 //        //ребра еще добавить
 //        graph.setWeightMatrix(adjMatrix);
-//        new MSTPrim().primMST(graph);
+//        new algorithms.MSTPrim().primMST(graph);
 //    }
 }

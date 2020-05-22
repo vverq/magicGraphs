@@ -1,9 +1,13 @@
+package algorithms;
+
+import graph.UndirectedGraph;
+
 import java.util.*;
 
 public class ComponentSearch {
     private ArrayList<ArrayList> components = new ArrayList<>();
     private int componentCount = 0;
-    ArrayList<ArrayList> componentSearch(Graph graph) {
+    public ArrayList<ArrayList> componentSearch(UndirectedGraph graph) {
         int verticesCount = graph.getVerticesCount();
         boolean[][] matrix = graph.getAdjacencyMatrix();
         int currentVertex = 0;
@@ -38,20 +42,26 @@ public class ComponentSearch {
                 currentVertex = verticesToVisit.pop();
             }
         }
+        System.out.println(components.toString());
         return components;
     }
 
-//    public static void main(String[] args)
-//    {
-//        boolean[][] matrix = new boolean[][]{
+    public static void main(String[] args)
+    {
+        boolean[][] matrix = new boolean[][]{
 //                new boolean[]{false, true, false, false},
 //                new boolean[]{true, false, true, false},
 //                new boolean[]{false, true, false, false},
 //                new boolean[]{false, false, false, false}
-//        };
-//
-//        var graph1 = new Graph(matrix);
-//        var c = new ComponentSearch();
-//        System.out.println(c.componentSearch(graph1));
-//    }
+                {false, true, true, true, true},
+                {true, false, true, false, false},
+                {true, true, false, true, false},
+                {true, false, true, false, true},
+                {true, false, false, true, false},
+        };
+
+        var graph1 = new graph.UndirectedGraph(matrix);
+        var c = new algorithms.ComponentSearch();
+        System.out.println(c.componentSearch(graph1));
+    }
 }

@@ -1,3 +1,7 @@
+package algorithms;
+
+import graph.Graph;
+
 import java.util.Stack;
 
 public class DFS
@@ -39,7 +43,7 @@ public class DFS
 //        adj[4].add(1);
 //        adj[2].add(3);
 //        adj[3].add(1);
-//        Graph graph = new Graph(6, adj, null);
-//        System.out.println(Arrays.toString(DFS.DFS(graph, 2)));
+//        graph.Graph graph = new graph.Graph(6, adj, null);
+//        System.out.println(Arrays.toString(algorithms.DFS.algorithms.DFS(graph, 2)));
 //    }
 }

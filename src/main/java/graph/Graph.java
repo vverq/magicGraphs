@@ -1,6 +1,8 @@
+package graph;
+
+import graph.Edge;
 import javafx.util.Pair;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Graph

@@ -1,3 +1,7 @@
+package algorithms;
+
+import graph.Graph;
+
 import java.util.*;
 
 
@@ -41,8 +45,8 @@ class TopologicalSort
 
 //    public static void main(String args[])
 //    {
-//        Graph g = new Graph(6, 6);
-//        g.setEdges(new Edge[]{new Edge(5, 2), new Edge(5, 0), new Edge(4, 0), new Edge(4, 1), new Edge(2, 3), new Edge(3,1)});
-//        TopologicalSort.topologicalSort(g);
+//        graph.Graph g = new graph.Graph(6, 6);
+//        g.setEdges(new graph.Edge[]{new graph.Edge(5, 2), new graph.Edge(5, 0), new graph.Edge(4, 0), new graph.Edge(4, 1), new graph.Edge(2, 3), new graph.Edge(3,1)});
+//        algorithms.TopologicalSort.topologicalSort(g);
 //    }
 }

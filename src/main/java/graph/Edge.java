@@ -1,4 +1,6 @@
-class Edge implements Comparable<Edge>
+package graph;
+
+public class Edge implements Comparable<Edge>
 {
     private int source;
     private int destination;
@@ -17,7 +19,7 @@ class Edge implements Comparable<Edge>
         destination = dst;
     }
 
-    Edge()
+    public Edge()
     {
         source = -1;
         destination = -1;

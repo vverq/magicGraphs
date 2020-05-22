@@ -1,3 +1,8 @@
+package algorithms;
+
+import graph.Edge;
+import graph.Graph;
+
 import java.util.Arrays;
 
 public class MSTKruskal
@@ -75,16 +80,16 @@ public class MSTKruskal
 
 //    public static void main(String[] args)
 //    {
-//        Graph graph = new Graph(4,5);
-//        Edge[] edges = new Edge[]
+//        graph.Graph graph = new graph.Graph(4,5);
+//        graph.Edge[] edges = new graph.Edge[]
 //        {
-//            new Edge(0, 1, 10),
-//            new Edge(0, 2, 6),
-//            new Edge(0, 3, 5),
-//            new Edge(1, 3, 15),
-//            new Edge(2, 3, 4),
+//            new graph.Edge(0, 1, 10),
+//            new graph.Edge(0, 2, 6),
+//            new graph.Edge(0, 3, 5),
+//            new graph.Edge(1, 3, 15),
+//            new graph.Edge(2, 3, 4),
 //        };
 //        graph.setEdges(edges);
-//        new MSTKruskal().KruskalMST(graph);
+//        new algorithms.MSTKruskal().KruskalMST(graph);
 //    }
 }
