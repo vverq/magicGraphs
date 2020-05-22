@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class DijkstraAlgorithm {
-    public static Stack<Integer> getShortestPath(Graph graph, int s, int t) {
+    public static int[] getShortestPath(Graph graph, int s, int t) {
         var distances = new int[graph.getVerticesCount()];
         var previous = new int[graph.getVerticesCount()];
         distance(graph, s, distances, previous);
@@ -18,7 +18,11 @@ public class DijkstraAlgorithm {
                 v = previous[v];
                 stack.push(v);
             }
-            return stack;
+            var result = new int[stack.size()];
+            for (var i = 0; i < result.length; i++) {
+                result[i] = stack.pop();
+            }
+            return result;
         }
         else {
             return null;
@@ -48,7 +52,7 @@ public class DijkstraAlgorithm {
         }
         for (var k = 0; k < graph.getVerticesCount() - 1; k++) {
             var w = min(F, distances);
-            F.remove(w);
+            F.remove((Integer) w);
             for (Integer v : F) {
                 if (!adjacencyMatrix[w][v]) {
                     continue;

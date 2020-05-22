@@ -17,8 +17,9 @@ public class TestComponentSearch{
     @Before
     public void setUp(){
         Reader reader = new Reader();
-        matrix1 = reader.readFile(new File("./src/main/java/tests/ComponentSearch/in1.txt"));
-      //  matrix2 = reader.readFile(new File("./src/main/java/tests/ComponentSearch/in2.txt"));
+        var result = reader.readFile(new File("./src/main/java/tests/ComponentSearch/in1.txt"));
+        matrix1 = result.getKey();
+      //  matrix2 = reader.readFile(new File("./src/main/java/tests/ComponentSearch/in1.txt"));
     }
 
     @Test

@@ -39,10 +39,10 @@ public class GraphColoring{
             color[i] = 0;
         }
 
-//        if (!graphColoringUtil(matrix, V, color, 0)){
-//            // TODO: кинуть варнинг ноу солюшен
-//            System.out.println("Нет решения");
-//        }
+        if (!graphColoringUtil(matrix, V, color, 0)){
+            // TODO: кинуть варнинг ноу солюшен
+            System.out.println("Нет решения");
+        }
         return color;
     }
 

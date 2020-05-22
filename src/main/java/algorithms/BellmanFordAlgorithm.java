@@ -2,10 +2,11 @@ package algorithms;
 
 import graph.Graph;
 
+import java.util.Arrays;
 import java.util.Stack;
 
 public class BellmanFordAlgorithm {
-    public static Stack<Integer> getShortestPath(Graph graph, int s, int t) {
+    public static int[] getShortestPath(Graph graph, int s, int t) {
         var distances = new int[graph.getVerticesCount()];
         var previous = new int[graph.getVerticesCount()];
         distance(graph, s, distances, previous);
@@ -17,7 +18,11 @@ public class BellmanFordAlgorithm {
                 v = previous[v];
                 stack.push(v);
             }
-            return stack;
+            var result = new int[stack.size()];
+            for (var i = 0; i < result.length; i++) {
+                result[i] = stack.pop();
+            }
+            return result;
         }
         else {
             return null;
@@ -42,11 +47,15 @@ public class BellmanFordAlgorithm {
                 if (v == s)
                     continue;
                 for (var w = 0; w < graph.getVerticesCount(); w++) {
+                    if (w == v || previous[v] == w || previous[w] == v)
+                        continue;
                     if (!adjacencyMatrix[w][v])
+                        continue;
+                    if (distances[w] == Integer.MAX_VALUE)
                         continue;
                     if (distances[w] + weightMatrix[w][v] < distances[v]) {
                         distances[v] = distances[w] + weightMatrix[w][v];
-                        previous[w] = v;
+                        previous[v] = w;
                     }
                 }
             }

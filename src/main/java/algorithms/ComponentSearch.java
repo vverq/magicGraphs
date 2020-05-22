@@ -23,7 +23,7 @@ public class ComponentSearch {
             componentVertices.add(currentVertex);
             while (i < verticesCount){
                 if (matrix[currentVertex][i]) {
-                    if (unvisitedVertices.contains(i)) {
+                    if (unvisitedVertices.contains(i) && !verticesToVisit.contains(i)) {
                         verticesToVisit.add(i);
                     }
                 }

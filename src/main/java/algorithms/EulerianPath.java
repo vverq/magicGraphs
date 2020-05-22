@@ -20,7 +20,7 @@ public class EulerianPath {
         return true;
     }
 
-    public static Stack<Integer> getEulerianPath(Graph graph, int start) {
+    public static Stack<Integer> getEulerianPath(UndirectedGraph graph, int start) {
         var sWork = new Stack<Integer>();
         var sRes = new Stack<Integer>();
         sWork.push(start);

@@ -3,28 +3,25 @@ package algorithms;
 import graph.Graph;
 
 import java.util.ArrayDeque;
+import java.util.Arrays;
 
 public class BFS {
     public static int[] BFS(Graph graph, int start) {
         var i = 0;
         var num = new int[graph.getVerticesCount()];
-        var father = new int[graph.getVerticesCount()];
-        for (var v = 0; v < graph.getVerticesCount(); v++) {
-            father[v] = 0;
-            var Q = new ArrayDeque<Integer>();
-            Q.addLast(v);
+        for (var j = 0; j < graph.getVerticesCount(); j++) {
+            num[j] = -1;
+        }
+        var adjacencyLists = graph.getAdjacencyLists();
+        var Q = new ArrayDeque<Integer>();
+        Q.addLast(start);
+        while (!Q.isEmpty()) {
+            var v = Q.pop();
             num[v] = i;
             i++;
-            while (!Q.isEmpty()) {
-                var u = Q.pollFirst();
-                for (Integer w : graph.getAdjacencyLists().get(u)) {
-                    if (num[w] == 0) {
-                        Q.addLast(w);
-                        father[w] = u;
-                        num[w] = i;
-                        i++;
-                    }
-                }
+            for (Integer w : adjacencyLists.get(v)) {
+                if (!Q.contains(w) && num[w] == -1)
+                    Q.addLast(w);
             }
         }
         return num;

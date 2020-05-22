@@ -3,20 +3,21 @@ package algorithms;
 import graph.Graph;
 import graph.UndirectedGraph;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Stack;
 
 public class BipartitenessChecking
 {
 
-    public boolean checkGraph(UndirectedGraph graph) {
+    public static boolean checkGraph(UndirectedGraph graph) {
         return getPartition(graph) != null;
     }
 
-    private int[] getPartition(Graph graph) {
-        var adjacencyMatrix = graph.getWeightMatrix();
-        var stack = new Stack<Integer>();
-        stack.push(0);
+    public static int[] getPartition(UndirectedGraph graph) {
+        var adjacencyMatrix = graph.getAdjacencyMatrix();
+        var stack = new ArrayList<Integer>();
+        stack.add(0);
         var values = new int[adjacencyMatrix.length];
         Arrays.fill(values, -1);
         while (true) {
@@ -25,30 +26,31 @@ public class BipartitenessChecking
                 return null;
             for (var i = 0; i < values.length; i++) {
                 if (values[i] == -1) {
-                    stack = new Stack<Integer>();
-                    stack.push(i);
+                    stack = new ArrayList<Integer>();
+                    stack.add(i);
                     flag = false;
                     break;
                 }
             }
-            if (flag)
+            if (flag) {
                 return values;
+            }
         }
     }
-    private boolean check(int[][] adjacencyMatrix, int[] values, Stack<Integer> stack) {
-        while (!stack.empty()) {
-            var currentTop = stack.peek();
+    private static boolean check(boolean[][] adjacencyMatrix, int[] values, ArrayList<Integer> stack) {
+        while (stack.size() != 0) {
+            var currentTop = stack.get(stack.size() - 1);
             if (values[currentTop] == -1)
                 values[currentTop] = 0;
             for (var top = 0; top < adjacencyMatrix.length; top++) {
                 if (top == currentTop
                         || (stack.size() > 1
-                        && top == stack.elementAt(stack.size() - 2))) {
+                        && top == stack.get(stack.size() - 2))) {
                     continue;
                 }
-                if (adjacencyMatrix[currentTop][top] == 1) {
+                if (adjacencyMatrix[currentTop][top]) {
                     if (values[top] == -1) {
-                        stack.push(top);
+                        stack.add(top);
                         values[top] = (values[currentTop] + 1) % 2;
                         if (!check(adjacencyMatrix, values, stack))
                             return false;
@@ -59,7 +61,7 @@ public class BipartitenessChecking
             }
             if (stack.isEmpty())
                 return true;
-            stack.pop();
+            stack.remove(stack.size() - 1);
         }
         return true;
     }

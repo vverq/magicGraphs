@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class DirectedGraph extends Graph {
 
-    DirectedGraph(boolean[][] adjacencyMatrix) {
+    public DirectedGraph(boolean[][] adjacencyMatrix) {
         super(adjacencyMatrix);
     }
 

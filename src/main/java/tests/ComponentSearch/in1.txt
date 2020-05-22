@@ -1,6 +1,7 @@
 5
-false, true, true, true, true,
-true, false, true, false, false,
-true, true, false, true, false,
-true, false, true, false, true,
-true, false, false, true, false,
+0 1 1 1 1
+1 0 1 0 0
+1 1 0 1 0
+1 0 1 0 1
+1 0 0 1 0
+N
