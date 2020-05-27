@@ -22,7 +22,7 @@ public class TestBellmanFordAlgorithm{
         var result = reader.readFile(new File("./src/main/java/tests/BellmanFordAlgorithm/in1.txt"));
         adjacencyMatrix1 = result.getKey();
         weightMatrix1 = result.getValue();
-        result = reader.readFile(new File("./src/main/java/tests/BellmanFordAlgorithm/in1.txt"));
+        result = reader.readFile(new File("./src/main/java/tests/BellmanFordAlgorithm/in2.txt"));
         adjacencyMatrix2 = result.getKey();
         weightMatrix2 = result.getValue();
     }

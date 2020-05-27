@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.Stack;
 
 public class ShortestPathInTopologicalSortedGraph {
-    public static Stack<Integer> getShortestPath(Graph graph, int s, int t, int[] sortedVertices) {
+    public static int[] getShortestPath(Graph graph, int s, int t, int[] sortedVertices) {
         var distances = new int[graph.getVerticesCount()];
         var previous = new int[graph.getVerticesCount()];
         int[] newSortedVertices = null;
@@ -32,7 +32,12 @@ public class ShortestPathInTopologicalSortedGraph {
                 v = previous[v];
                 stack.push(v);
             }
-            return stack;
+            var result = new int[stack.size()];
+            var n = stack.size();
+            for (var i = 0; i < n; i++) {
+                result[i] = stack.pop();
+            }
+            return result;
         }
         else {
             return null;
@@ -43,7 +48,7 @@ public class ShortestPathInTopologicalSortedGraph {
         var weightMatrix = graph.getWeightMatrix();
         var adjacencyMatrix = graph.getAdjacencyMatrix();
         previous[v0] = -1;
-        for (var k = 2; k <= graph.getVerticesCount(); k++) {
+        for (var k = 0; k < graph.getVerticesCount(); k++) {
             distances[sortedVertices[k]] = Integer.MAX_VALUE;
         }
         LinkedList<LinkedList<Integer>> adjacencyListFrom;
@@ -52,7 +57,7 @@ public class ShortestPathInTopologicalSortedGraph {
         else
             adjacencyListFrom = graph.getAdjacencyLists();
 
-        for (var k = 2; k <= graph.getVerticesCount(); k++) {
+        for (var k = 0; k < graph.getVerticesCount(); k++) {
             for (Integer w : adjacencyListFrom.get(sortedVertices[k])) {
                 if (distances[w] + weightMatrix[w][sortedVertices[k]] < distances[sortedVertices[k]]) {
                     distances[sortedVertices[k]] = distances[w] + weightMatrix[w][sortedVertices[k]];

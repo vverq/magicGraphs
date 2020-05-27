@@ -3,10 +3,11 @@ package algorithms;
 import graph.Graph;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Stack;
 
 public class MAXMINPath {
-    public static Stack<Integer> getMAXMINPath(Graph graph, int s, int t) {
+    public static int[] getMAXMINPath(Graph graph, int s, int t) {
         var distances = new int[graph.getVerticesCount()];
         var previous = new int[graph.getVerticesCount()];
         distance(graph, s, distances, previous);
@@ -18,7 +19,12 @@ public class MAXMINPath {
                 v = previous[v];
                 stack.push(v);
             }
-            return stack;
+            var result = new int[stack.size()];
+            var n = stack.size();
+            for (var i = 0; i < n; i++) {
+                result[i] = stack.pop();
+            }
+            return result;
         }
         else {
             return null;
@@ -59,7 +65,7 @@ public class MAXMINPath {
                     maxWValue = distances[w];
                 }
             }
-            F.remove(maxW);
+            F.remove((Integer)maxW);
             S.add(maxW);
         }
     }
