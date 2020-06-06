@@ -16,8 +16,8 @@ public class TestMAXMINPath {
     public void setUp(){
         Reader reader = new Reader();
         var result = reader.readFile(new File("./src/main/java/tests/BellmanFordAlgorithm/in1.txt"));
-        adjacencyMatrix1 = result.getKey();
-        weightMatrix1 = result.getValue();
+        adjacencyMatrix1 = (boolean[][])result.get(0);
+        weightMatrix1 = (int[][])result.get(1);
     }
 
     @Test

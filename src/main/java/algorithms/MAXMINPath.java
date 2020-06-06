@@ -6,7 +6,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Stack;
 
+/** Класс, предоставляющий метод поиска MAXMIN-пути.
+ */
 public class MAXMINPath {
+
+    /** Метод поиска MAXMIN-пути, испольующий модификацию алгоритма Дейкстры поиска кратчайшего пути.
+     * @param graph Ориентированный или неориентированный граф.
+     * @param s Начальная вершина.
+     * @param t Конечная вершина.
+     * @return Массив с MAXMIN-путем между начальной и конечной вершинами, если он есть, иначе - null.
+     */
     public static int[] getMAXMINPath(Graph graph, int s, int t) {
         var distances = new int[graph.getVerticesCount()];
         var previous = new int[graph.getVerticesCount()];

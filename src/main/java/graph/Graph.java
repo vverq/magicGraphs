@@ -1,8 +1,6 @@
 package graph;
 
 import graph.Edge;
-import javafx.util.Pair;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -54,7 +52,7 @@ public class Graph
         return result;
     }
 
-    public static Pair<boolean[][], int[][]> edgesToAdjacencyAndWeightMatrix(
+    public static ArrayList edgesToAdjacencyAndWeightMatrix(
             Edge[] edges, int verticesCount) {
         var adjacencyMatrix = new boolean[verticesCount][verticesCount];
         var weightMatrix = new int[verticesCount][verticesCount];
@@ -62,7 +60,10 @@ public class Graph
             adjacencyMatrix[edge.getSource()][edge.getDestination()] = true;
             weightMatrix[edge.getSource()][edge.getDestination()] = edge.getWeight();
         }
-        return new Pair<>(adjacencyMatrix, weightMatrix);
+        var result = new ArrayList();
+        result.add(adjacencyMatrix);
+        result.add(weightMatrix);
+        return result;
     }
 
     public static void setWeights(Edge[] edges, int[][] weightMatrix) {
@@ -91,8 +92,8 @@ public class Graph
         m_edges = edges;
         m_edgesCount = edges.length;
         var result = edgesToAdjacencyAndWeightMatrix(edges, m_verticesCount);
-        m_adjacencyMatrix = result.getKey();
-        m_weightMatrix = result.getValue();
+        m_adjacencyMatrix = (boolean[][])result.get(0);
+        m_weightMatrix = (int[][])result.get(1);
     }
 
     public void setWeightMatrix(int[][] weightMatrix) {

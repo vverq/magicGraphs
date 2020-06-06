@@ -6,11 +6,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Stack;
 
+/** Класс, предоставляющий методы проверки на ацикличность и поиска цикла в графе.
+ */
 public class CycleFinding {
+    /** Метод проверки графа на ацикличность.
+     * @param graph Ориентированный или неориентированный граф.
+     * @return true - если в графе нет циклов, иначе - false.
+     */
     public static boolean isGraphAcyclic(Graph graph) {
         return getCycle(graph) == null;
     }
 
+    /** Метод поиска цикла в графе с использованием меток и стека.
+     * @param graph Ориентированный или неориентированный граф.
+     * @return Список вершин в найденном цикле в порядке их соединения.
+     */
     public static ArrayList<Integer> getCycle(Graph graph) {
         var cycle = new ArrayList<Integer>();
         var stack = new ArrayList<Integer>();

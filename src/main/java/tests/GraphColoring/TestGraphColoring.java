@@ -23,9 +23,9 @@ public class TestGraphColoring{
     @Before
     public void setUp(){
         Reader reader = new Reader();
-        matrix1 = reader.readFile(new File("./src/main/java/tests/GraphColoring/in1.txt")).getKey();
-        matrix2 = reader.readFile(new File("./src/main/java/tests/GraphColoring/in1.txt")).getKey();
-        matrix3 = reader.readFile(new File("./src/main/java/tests/GraphColoring/in3.txt")).getKey();
+        matrix1 = (boolean[][])reader.readFile(new File("./src/main/java/tests/GraphColoring/in1.txt")).get(0);
+        matrix2 = (boolean[][])reader.readFile(new File("./src/main/java/tests/GraphColoring/in1.txt")).get(0);
+        matrix3 = (boolean[][])reader.readFile(new File("./src/main/java/tests/GraphColoring/in3.txt")).get(0);
     }
 
     @Test

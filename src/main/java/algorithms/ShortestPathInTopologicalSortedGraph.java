@@ -6,7 +6,19 @@ import graph.Graph;
 import java.util.LinkedList;
 import java.util.Stack;
 
+/** Класс, предоставляющий метод поиска кратчайшего пути в топологически отсортированном графе.
+ */
 public class ShortestPathInTopologicalSortedGraph {
+
+    /** Метод поиска кратчайшего пути в топологически отсортированном графе,
+     * который сперва считает кратчайшие расстояния от начальной вершины до остальных вершин, а затем
+     * собирает кратчайший путь от начальной вершины до конечной, используя массив Previous.
+     * @param graph Ориентированный или неориентированный граф.
+     * @param s Начальная вершина.
+     * @param t Конечная вершина.
+     * @param sortedVertices Массив с отсортированными вершинами.
+     * @return Массив с кратчайшим путем, если он есть, иначе - null.
+     */
     public static int[] getShortestPath(Graph graph, int s, int t, int[] sortedVertices) {
         var distances = new int[graph.getVerticesCount()];
         var previous = new int[graph.getVerticesCount()];

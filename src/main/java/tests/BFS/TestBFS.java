@@ -15,9 +15,9 @@ public class TestBFS {
     public void setUp(){
         Reader reader = new Reader();
         var result = reader.readFile(new File("./src/main/java/tests/BFS/in1.txt"));
-        adjacencyMatrix1 = result.getKey();
+        adjacencyMatrix1 = (boolean[][])result.get(0);
         result = reader.readFile(new File("./src/main/java/tests/BFS/in1.txt"));
-        adjacencyMatrix2 = result.getKey();
+        adjacencyMatrix2 = (boolean[][])result.get(0);
     }
 
     @Test

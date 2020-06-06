@@ -18,7 +18,7 @@ public class TestComponentSearch{
     public void setUp(){
         Reader reader = new Reader();
         var result = reader.readFile(new File("./src/main/java/tests/ComponentSearch/in1.txt"));
-        matrix1 = result.getKey();
+        matrix1 = (boolean[][])result.get(0);
       //  matrix2 = reader.readFile(new File("./src/main/java/tests/ComponentSearch/in1.txt"));
     }
 

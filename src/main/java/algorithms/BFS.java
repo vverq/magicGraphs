@@ -5,7 +5,14 @@ import graph.Graph;
 import java.util.ArrayDeque;
 import java.util.Arrays;
 
+/**Класс, предоставляющий метод поиска в ширину.
+ */
 public class BFS {
+    /** Метод поиска в ширину с использованием очереди.
+     * @param graph Ориентированный или неориентированный граф.
+     * @param start Начальная вершина.
+     * @return Массив с вершинами в порядке их нахождения.
+     */
     public static int[] BFS(Graph graph, int start) {
         var i = 0;
         var num = new int[graph.getVerticesCount()];

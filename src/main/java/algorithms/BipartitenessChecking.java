@@ -7,13 +7,24 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Stack;
 
+/**Класс проверки на двудольность.
+ */
 public class BipartitenessChecking
 {
-
+    /** Метод проверки графа на двудольность.
+     * @param graph Неориентированный граф.
+     * @return true, если граф двудольный, иначе - false.
+     */
     public static boolean checkGraph(UndirectedGraph graph) {
         return getPartition(graph) != null;
     }
 
+    /** Метод разделения графа на доли с использованием меток, что позволяет о
+     * бнаруживать циклы нечетной длины, сигнализирующие о том, что граф не двудолен.
+     * @param graph Неориентированный граф.
+     * @return Массив, в котром индекс - вершина, а значение (0 или 1) - номер доли,
+     * если граф двудолен, иначе - null.
+     */
     public static int[] getPartition(UndirectedGraph graph) {
         var adjacencyMatrix = graph.getAdjacencyMatrix();
         var stack = new ArrayList<Integer>();

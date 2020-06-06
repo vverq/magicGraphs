@@ -5,7 +5,18 @@ import graph.Graph;
 import java.util.ArrayList;
 import java.util.Stack;
 
+/** Класс, предоставляющий метод поиска кратчайшего пути на графе с использованием алгоритма Дейкстры.
+ */
 public class DijkstraAlgorithm {
+
+    /** Метод находит кратчайшие расстояния от начальной вершины до всех других доступных из нчальной вершин
+     * с использованием жадного метода distance. Кратчайший путь от нчальной вершины до конечной строится
+     * по массиву Previous.
+     * @param graph Ориентированный или неориентированный граф.
+     * @param s Начальная вершина.
+     * @param t Конечная вершина.
+     * @return Массив с кратчайшим путем между начальной и конечной вершинами, если он есть, иначе - null.
+     */
     public static int[] getShortestPath(Graph graph, int s, int t) {
         var distances = new int[graph.getVerticesCount()];
         var previous = new int[graph.getVerticesCount()];

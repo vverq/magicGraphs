@@ -7,7 +7,14 @@ import graph.UndirectedGraph;
 import java.util.LinkedList;
 import java.util.Stack;
 
+/** Класс, предоставляющий методы проверки графа на то, является ли он
+ * эйлеровым, и метод поиска эйлеровой цепи в графе.
+ */
 public class EulerianPath {
+    /** Метод проверки графа на то, является ли он эйлеровым.
+     * @param graph Неориентированный граф.
+     * @return true - если граф эйлеров, иначе - false.
+     */
     public static boolean isGraphEulerian(UndirectedGraph graph) {
         var compSearch = new ComponentSearch();
         if (graph.getVerticesCount() == 1 || compSearch.componentSearch(graph).size() > 1) {
@@ -20,6 +27,11 @@ public class EulerianPath {
         return true;
     }
 
+    /** Метод поиска эйлеровой цепи в графе.
+     * @param graph Неориентированный граф.
+     * @param start Начальная вершина.
+     * @return Стек с вершинами в цепи.
+     */
     public static Stack<Integer> getEulerianPath(UndirectedGraph graph, int start) {
         var sWork = new Stack<Integer>();
         var sRes = new Stack<Integer>();
