@@ -6,37 +6,31 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/** Класс, предоставляющий функциональность для парсинга текстовых файлов с заданным графом.
+ */
 public class Reader{
 
     public Reader() {}
 
+    /** Метод парсит переданный файл в соотвествии с протоколом оформления.
+     * @param filename Файл.
+     * @return Возвращает список, в котором первый элемент - это матрица смежности,
+     * а второй - матрица весов.
+     */
     public ArrayList readFile(File filename) {
         try (FileReader reader = new FileReader(filename)) {
             BufferedReader r = new BufferedReader(reader);
             String line = r.readLine();
             int n = Integer.parseInt(line);
-            boolean[][] adjacencyMatrix = new boolean[n][n];
-            for (int i = 0; i < n; i++) {
-                line = r.readLine();
-                String[] values = line.split(" ");
-                for (int j = 0; j < n; j++) {
-                    adjacencyMatrix[i][j] = values[j].equals("1");
-                }
-            }
-            line = r.readLine();
-            if (line.equals("N")) {
-                var result = new ArrayList();
-                result.add(adjacencyMatrix);
-                result.add(new int[n][n]);
-                return result;
-            }
+            var adjacencyMatrix = new boolean[n][n];
             var weightMatrix = new int[n][n];
-            for (int i = 0; i < n; i++) {
-                line = r.readLine();
+            while ((line = r.readLine()) != null) {
                 String[] values = line.split(" ");
-                for (int j = 0; j < n; j++) {
-                    weightMatrix[i][j] = Integer.parseInt(values[j]);
-                }
+                var v = Integer.parseInt(values[0]);
+                var w = Integer.parseInt(values[1]);
+                var c = Integer.parseInt(values[2]);
+                adjacencyMatrix[v][w] = true;
+                weightMatrix[v][w] = c;
             }
             var result = new ArrayList();
             result.add(adjacencyMatrix);
