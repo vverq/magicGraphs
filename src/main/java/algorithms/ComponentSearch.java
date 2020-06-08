@@ -42,26 +42,6 @@ public class ComponentSearch {
                 currentVertex = verticesToVisit.pop();
             }
         }
-        System.out.println(components.toString());
         return components;
-    }
-
-    public static void main(String[] args)
-    {
-        boolean[][] matrix = new boolean[][]{
-//                new boolean[]{false, true, false, false},
-//                new boolean[]{true, false, true, false},
-//                new boolean[]{false, true, false, false},
-//                new boolean[]{false, false, false, false}
-                {false, true, true, true, true},
-                {true, false, true, false, false},
-                {true, true, false, true, false},
-                {true, false, true, false, true},
-                {true, false, false, true, false},
-        };
-
-        var graph1 = new graph.UndirectedGraph(matrix);
-        var c = new algorithms.ComponentSearch();
-        System.out.println(c.componentSearch(graph1));
     }
 }

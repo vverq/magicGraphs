@@ -2,48 +2,33 @@ package algorithms;
 
 import graph.Graph;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
-public class DFS
-{
-    private static void DFS(Graph graph, int start)
-    {
+public class DFS {
+    public static ArrayList<Integer> DFS(Graph graph, int start) {
         Stack<Integer> stack = new Stack<>();
+        ArrayList<Integer> DFSVertices = new ArrayList<>();
         stack.push(start);
+        DFSVertices.add(start);
         int count = graph.getVerticesCount();
-        boolean[] mark = new boolean[count];
-        for (int i = 0; i < count; i++)
-        {
-            mark[i] = true;
+        boolean[] markers = new boolean[count];
+        for (int i = 0; i < count; i++) {
+            markers[i] = true;
         }
-
-        while (!stack.empty())
-        {
-            int v = stack.firstElement();
-            stack.pop();
-            for (int i = 0; i < graph.getAdjacencyLists().get(v).size(); ++i)
-            {
-                if (mark[(int) graph.getAdjacencyLists().get(v).get(i)])
-                {
-                    stack.push((Integer) graph.getAdjacencyLists().get(v).get(i));
-                    mark[(int) graph.getAdjacencyLists().get(v).get(i)] = false;
+        while (!stack.empty()) {
+            int v = stack.pop();
+            if (!DFSVertices.contains(v)) {
+                DFSVertices.add(v);
+            }
+            for (int i = 0; i < graph.getAdjacencyLists().get(v).size(); ++i) {
+                if (markers[graph.getAdjacencyLists().get(v).get(i)]) {
+                    stack.push(graph.getAdjacencyLists().get(v).get(i));
+                    markers[graph.getAdjacencyLists().get(v).get(i)] = false;
                 }
             }
         }
+        System.out.println(DFSVertices);
+        return DFSVertices;
     }
-
-//    public static void main(String[] args)
-//    {
-//        LinkedList[] adj = new LinkedList[6];
-//        for (int i=0; i<=5; ++i)
-//            adj[i] = new LinkedList();
-//        adj[5].add(2);
-//        adj[5].add(0);
-//        adj[4].add(0);
-//        adj[4].add(1);
-//        adj[2].add(3);
-//        adj[3].add(1);
-//        graph.Graph graph = new graph.Graph(6, adj, null);
-//        System.out.println(Arrays.toString(algorithms.DFS.algorithms.DFS(graph, 2)));
-//    }
 }
