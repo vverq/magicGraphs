@@ -17,7 +17,7 @@ public class TestDFS {
     @Before
     public void setUp(){
         Reader reader = new Reader();
-        adjacencyMatrix1 = (boolean[][])reader.readFile(new File("./src/main/java/tests/DFS/in1.txt")).get(0);
+        adjacencyMatrix1 = (boolean[][])reader.readFile(new File("./src/main/java/tests/DFS/in.txt")).get(0);
         adjacencyMatrix2 = (boolean[][])reader.readFile(new File("./src/main/java/tests/DFS/in2.txt")).get(0);
     }
 

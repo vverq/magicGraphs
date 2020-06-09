@@ -14,7 +14,7 @@ public class TestBipartitenessChecking {
     @Before
     public void setUp(){
         Reader reader = new Reader();
-        var result = reader.readFile(new File("./src/main/java/tests/BipartitenessChecking/in1.txt"));
+        var result = reader.readFile(new File("./src/main/java/tests/BipartitenessChecking/in.txt"));
         adjacencyMatrix1 = (boolean[][])result.get(0);
     }
 

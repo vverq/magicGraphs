@@ -15,7 +15,7 @@ public class TestCycleFinding {
     @Before
     public void setUp(){
         Reader reader = new Reader();
-        var result = reader.readFile(new File("./src/main/java/tests/CycleFinding/in1.txt"));
+        var result = reader.readFile(new File("./src/main/java/tests/CycleFinding/in.txt"));
         adjacencyMatrix1 = (boolean[][])result.get(0);
         result = reader.readFile(new File("./src/main/java/tests/CycleFinding/in2.txt"));
         adjacencyMatrix2 = (boolean[][])result.get(0);

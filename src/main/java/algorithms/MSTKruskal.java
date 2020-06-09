@@ -3,93 +3,70 @@ package algorithms;
 import graph.Edge;
 import graph.Graph;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 
-public class MSTKruskal
-{
-    private int find(Integer[][] subsets, int i)
-    {
-        if (subsets[i][0] != i)
-        {
+public class MSTKruskal {
+    private int find(Integer[][] subsets, int i) {
+        if (subsets[i][0] != i) {
             subsets[i][0] = find(subsets, subsets[i][0]);
         }
         return subsets[i][0];
     }
 
-    private void union(Integer[][] subsets, int x, int y)
-    {
+    private void union(Integer[][] subsets, int x, int y) {
         int xroot = find(subsets, x);
         int yroot = find(subsets, y);
-
-        if (subsets[xroot][1] < subsets[yroot][1])
-        {
+        if (subsets[xroot][1] < subsets[yroot][1]) {
             subsets[xroot][0] = yroot;
         }
-        else if (subsets[xroot][1] > subsets[yroot][1])
-        {
+        else if (subsets[xroot][1] > subsets[yroot][1]) {
             subsets[yroot][0] = xroot;
         }
-        else
-        {
+        else {
             subsets[yroot][0] = xroot;
             subsets[xroot][1]++;
         }
     }
 
-    private void KruskalMST(Graph graph)
-    {
+    public ArrayList<Edge> KruskalMST(Graph graph) {
+        ArrayList<Edge> mst = new ArrayList<>();
         int V = graph.getVerticesCount();
         Edge[] result = new Edge[V];
         int i = 0;
         int j = 0;
-        for (i = 0; i < V; ++i)
-        {
+        for (i = 0; i < V; ++i) {
             result[i] = new Edge();
         }
         Arrays.sort(graph.getM_edges());
         Integer[][] subsets = new Integer[V][];
-
-        for (i = 0; i < V; ++i)
-        {
+        for (i = 0; i < V; ++i) {
             subsets[i] = new Integer[V];
         }
-        for (int v = 0; v < V; ++v)
-        {
+        for (int v = 0; v < V; ++v) {
             subsets[v][0] = v;
             subsets[v][1] = 0;
         }
-
         i = 0;
-        while (j < V - 1)
-        {
+        while (j < V - 1) {
             Edge next_edge = graph.getM_edges()[i++];
             int x = find(subsets, next_edge.getSource());
             int y = find(subsets, next_edge.getDestination());
-            if (x != y)
-            {
+            if (x != y) {
                 result[j++] = next_edge;
                 union(subsets, x, y);
             }
         }
-
-        // TODO: Вывод получившегося минимального остовного дерева, потом заменить тело цикла на что-то нужное
-        for (i = 0; i < j; ++i)
-            System.out.println(result[i].getSource() + " -- " +
-                    result[i].getDestination() + " == " + result[i].getWeight());
+        for (i = 0; i < j; ++i) {
+            mst.add(result[i]);
+            mst.sort(new Comparator<Edge>() {
+                @Override
+                public int compare(Edge edge1, Edge edge2) {
+                    return edge1.getSource() - edge2.getSource();
+                }
+            });
+        }
+        return mst;
     }
-
-//    public static void main(String[] args)
-//    {
-//        graph.Graph graph = new graph.Graph(4,5);
-//        graph.Edge[] edges = new graph.Edge[]
-//        {
-//            new graph.Edge(0, 1, 10),
-//            new graph.Edge(0, 2, 6),
-//            new graph.Edge(0, 3, 5),
-//            new graph.Edge(1, 3, 15),
-//            new graph.Edge(2, 3, 4),
-//        };
-//        graph.setEdges(edges);
-//        new algorithms.MSTKruskal().KruskalMST(graph);
-//    }
 }

@@ -19,7 +19,7 @@ public class TestBellmanFordAlgorithm{
     @Before
     public void setUp(){
         Reader reader = new Reader();
-        var result = reader.readFile(new File("./src/main/java/tests/BellmanFordAlgorithm/in1.txt"));
+        var result = reader.readFile(new File("./src/main/java/tests/BellmanFordAlgorithm/in.txt"));
         adjacencyMatrix1 = (boolean[][])result.get(0);
         weightMatrix1 = (int[][])result.get(1);
         result = reader.readFile(new File("./src/main/java/tests/BellmanFordAlgorithm/in2.txt"));
