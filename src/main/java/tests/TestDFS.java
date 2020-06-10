@@ -1,4 +1,4 @@
-package tests.DFS;
+package tests;
 
 import algorithms.DFS;
 import org.junit.Before;
@@ -17,8 +17,8 @@ public class TestDFS {
     @Before
     public void setUp(){
         Reader reader = new Reader();
-        adjacencyMatrix1 = (boolean[][])reader.readFile(new File("./src/main/java/tests/DFS/in.txt")).get(0);
-        adjacencyMatrix2 = (boolean[][])reader.readFile(new File("./src/main/java/tests/DFS/in2.txt")).get(0);
+        adjacencyMatrix1 = (boolean[][])reader.readFile(new File("./src/main/resources/DFS1.txt")).get(0);
+        adjacencyMatrix2 = (boolean[][])reader.readFile(new File("./src/main/resources/DFS2.txt")).get(0);
     }
 
     @Test

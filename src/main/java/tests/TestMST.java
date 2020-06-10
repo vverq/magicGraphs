@@ -1,4 +1,4 @@
-package tests.MST;
+package tests;
 
 import graph.Edge;
 import graph.Graph;
@@ -17,11 +17,11 @@ public class TestMST {
     @Before
     public void setUp() {
         Reader reader = new Reader();
-        var result = reader.readFile(new File("./src/main/java/tests/MST/in.txt"));
+        var result = reader.readFile(new File("./src/main/resources/MST.txt"));
         adjacencyMatrix = (boolean[][])result.get(0);
         weightMatrix = (int[][])result.get(1);
     }
-    
+
     @Test
     public void testMSTBoruvka() {
         Graph graph = new Graph(adjacencyMatrix);

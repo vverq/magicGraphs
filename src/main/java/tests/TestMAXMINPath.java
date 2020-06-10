@@ -1,6 +1,5 @@
-package tests.ShortestPathInTopologicalSortedGraph;
+package tests;
 import algorithms.MAXMINPath;
-import algorithms.ShortestPathInTopologicalSortedGraph;
 import org.junit.*;
 import tests.Reader;
 
@@ -9,14 +8,14 @@ import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
-public class ShortestPathInTopologicalSortedGraphTests {
+public class TestMAXMINPath {
     private boolean[][] adjacencyMatrix1;
     private int[][] weightMatrix1;
 
     @Before
     public void setUp(){
         Reader reader = new Reader();
-        var result = reader.readFile(new File("./src/main/java/tests/BellmanFordAlgorithm/in.txt"));
+        var result = reader.readFile(new File("./src/main/resources/MaxminPath.txt"));
         adjacencyMatrix1 = (boolean[][])result.get(0);
         weightMatrix1 = (int[][])result.get(1);
     }
@@ -29,13 +28,7 @@ public class ShortestPathInTopologicalSortedGraphTests {
         expected[0] = 0;
         expected[1] = 2;
         expected[2] = 4;
-        var sortedVertices = new int[5];
-        sortedVertices[0] = 0;
-        sortedVertices[1] = 1;
-        sortedVertices[2] = 2;
-        sortedVertices[3] = 3;
-        sortedVertices[4] = 4;
-        assertArrayEquals(expected, ShortestPathInTopologicalSortedGraph.getShortestPath(graph, 0,
-                4, sortedVertices));
+        assertArrayEquals(expected, MAXMINPath.getMAXMINPath(graph, 0, 4));
     }
 }
+

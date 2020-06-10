@@ -4,9 +4,22 @@ import graph.UndirectedGraph;
 
 import java.util.*;
 
+/**Класс, предоставляющий метод поиска компонент связности
+*/
 public class ComponentSearch {
     private ArrayList<ArrayList> components = new ArrayList<>();
     private int componentCount = 0;
+    /**Метод componentSearch осуществляет поиск компонент связности,
+     * используется обход в ширину. Запускается обход из первой (минимальной
+     * вершины) и все вершины, которые он обошел записывается в первую компоненту
+     * связности. Затем берется первая вершина из тех, которые еще не были
+     * посещены, запускается обход из нее, так найдется вторая компонента
+     * связности. Продолжается эта операция до тех пора, пока не останется
+     * непосещенных вершин.
+     * @param graph Неориентированный граф.
+     * @return Массив, содержащий массивы с вершинами, входящими в одну
+     * компоненту связности графа.
+     */
     public ArrayList<ArrayList> componentSearch(UndirectedGraph graph) {
         int verticesCount = graph.getVerticesCount();
         boolean[][] matrix = graph.getAdjacencyMatrix();

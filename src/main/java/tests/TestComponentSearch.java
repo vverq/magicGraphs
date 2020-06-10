@@ -1,4 +1,4 @@
-package tests.ComponentSearch;
+package tests;
 
 import org.junit.*;
 import tests.Reader;
@@ -17,8 +17,8 @@ public class TestComponentSearch {
     @Before
     public void setUp() {
         Reader reader = new Reader();
-        matrix1 = (boolean[][])reader.readFile(new File("./src/main/java/tests/ComponentSearch/in.txt")).get(0);
-        matrix2 = (boolean[][])reader.readFile(new File("./src/main/java/tests/ComponentSearch/in2.txt")).get(0);
+        matrix1 = (boolean[][])reader.readFile(new File("./src/main/resources/ComponentSearch1.txt")).get(0);
+        matrix2 = (boolean[][])reader.readFile(new File("./src/main/resources/ComponentSearch2.txt")).get(0);
     }
 
     @Test

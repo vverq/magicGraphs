@@ -1,4 +1,4 @@
-package tests.BellmanFordAlgorithm;
+package tests;
 
 import algorithms.BellmanFordAlgorithm;
 import org.junit.*;
@@ -19,10 +19,10 @@ public class TestBellmanFordAlgorithm{
     @Before
     public void setUp(){
         Reader reader = new Reader();
-        var result = reader.readFile(new File("./src/main/java/tests/BellmanFordAlgorithm/in.txt"));
+        var result = reader.readFile(new File("./src/main/resources/BellmanFord1.txt"));
         adjacencyMatrix1 = (boolean[][])result.get(0);
         weightMatrix1 = (int[][])result.get(1);
-        result = reader.readFile(new File("./src/main/java/tests/BellmanFordAlgorithm/in2.txt"));
+        result = reader.readFile(new File("./src/main/resources/BellmanFord2.txt"));
         adjacencyMatrix2 = (boolean[][])result.get(0);
         weightMatrix2 = (int[][])result.get(1);
     }

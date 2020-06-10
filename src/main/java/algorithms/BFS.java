@@ -3,7 +3,6 @@ package algorithms;
 import graph.Graph;
 
 import java.util.ArrayDeque;
-import java.util.Arrays;
 
 /**Класс, предоставляющий метод поиска в ширину.
  */

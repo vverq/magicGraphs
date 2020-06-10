@@ -1,4 +1,4 @@
-package tests.CycleFinding;
+package tests;
 import algorithms.CycleFinding;
 import org.junit.*;
 import tests.Reader;
@@ -15,9 +15,9 @@ public class TestCycleFinding {
     @Before
     public void setUp(){
         Reader reader = new Reader();
-        var result = reader.readFile(new File("./src/main/java/tests/CycleFinding/in.txt"));
+        var result = reader.readFile(new File("./src/main/resources/CycleFinding1.txt"));
         adjacencyMatrix1 = (boolean[][])result.get(0);
-        result = reader.readFile(new File("./src/main/java/tests/CycleFinding/in2.txt"));
+        result = reader.readFile(new File("./src/main/resources/CycleFinding2.txt"));
         adjacencyMatrix2 = (boolean[][])result.get(0);
     }
 

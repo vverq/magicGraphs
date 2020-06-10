@@ -1,4 +1,4 @@
-package tests.BFS;
+package tests;
 import algorithms.BFS;
 import org.junit.*;
 import tests.Reader;
@@ -14,9 +14,9 @@ public class TestBFS {
     @Before
     public void setUp(){
         Reader reader = new Reader();
-        var result = reader.readFile(new File("./src/main/java/tests/BFS/in.txt"));
+        var result = reader.readFile(new File("./src/main/resources/BFS1.txt"));
         adjacencyMatrix1 = (boolean[][])result.get(0);
-        result = reader.readFile(new File("./src/main/java/tests/BFS/in2.txt"));
+        result = reader.readFile(new File("./src/main/resources/BFS2.txt"));
         adjacencyMatrix2 = (boolean[][])result.get(0);
     }
 

@@ -1,4 +1,4 @@
-package tests.HamiltonianCycle;
+package tests;
 
 import org.junit.*;
 import tests.Reader;
@@ -17,9 +17,9 @@ public class TestHamiltonianCycle {
     @Before
     public void setUp() {
         Reader reader = new Reader();
-        matrix1 = (boolean[][])reader.readFile(new File("./src/main/java/tests/HamiltonianCycle/in.txt")).get(0);
-        matrix2 = (boolean[][])reader.readFile(new File("./src/main/java/tests/HamiltonianCycle/in2.txt")).get(0);
-        matrix3 = (boolean[][])reader.readFile(new File("./src/main/java/tests/HamiltonianCycle/in3.txt")).get(0);
+        matrix1 = (boolean[][])reader.readFile(new File("./src/main/resources/HamiltonianCycle1.txt")).get(0);
+        matrix2 = (boolean[][])reader.readFile(new File("./src/main/resources/HamiltonianCycle2.txt")).get(0);
+        matrix3 = (boolean[][])reader.readFile(new File("./src/main/resources/HamiltonianCycle3.txt")).get(0);
     }
 
     @Test

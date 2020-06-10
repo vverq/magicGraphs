@@ -1,4 +1,4 @@
-package tests.TopologicalSort;
+package tests;
 
 import algorithms.TopologicalSort;
 import org.junit.*;
@@ -15,8 +15,8 @@ public class TestTopologicalSort {
     @Before
     public void setUp() {
         Reader reader = new Reader();
-        matrix1 = (boolean[][])reader.readFile(new File("./src/main/java/tests/TopologicalSort/in.txt")).get(0);
-        matrix2 = (boolean[][])reader.readFile(new File("./src/main/java/tests/TopologicalSort/in2.txt")).get(0);
+        matrix1 = (boolean[][])reader.readFile(new File("./src/main/resources/TopologicalSort1.txt")).get(0);
+        matrix2 = (boolean[][])reader.readFile(new File("./src/main/resources/TopologicalSort2.txt")).get(0);
     }
 
     @Test

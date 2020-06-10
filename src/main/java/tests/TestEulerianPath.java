@@ -1,4 +1,4 @@
-package tests.EulerianPath;
+package tests;
 
 import algorithms.EulerianPath;
 import org.junit.*;
@@ -16,7 +16,7 @@ public class TestEulerianPath {
     @Before
     public void setUp(){
         Reader reader = new Reader();
-        var result = reader.readFile(new File("./src/main/java/tests/BellmanFordAlgorithm/in.txt"));
+        var result = reader.readFile(new File("./src/main/resources/EulerianPath.txt"));
         adjacencyMatrix1 = (boolean[][])result.get(0);
     }
 
