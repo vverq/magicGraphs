@@ -3,7 +3,7 @@ package tests;
 import graph.Edge;
 import graph.Graph;
 import org.junit.*;
-import tests.Reader;
+import utilities.Reader;
 
 import java.io.File;
 import java.util.ArrayList;

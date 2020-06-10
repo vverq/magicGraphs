@@ -3,7 +3,7 @@ package tests;
 import algorithms.DFS;
 import org.junit.Before;
 import org.junit.Test;
-import tests.Reader;
+import utilities.Reader;
 
 import java.io.File;
 import java.util.ArrayList;

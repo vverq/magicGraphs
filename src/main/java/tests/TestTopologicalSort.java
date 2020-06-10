@@ -2,7 +2,7 @@ package tests;
 
 import algorithms.TopologicalSort;
 import org.junit.*;
-import tests.Reader;
+import utilities.Reader;
 
 import java.io.File;
 

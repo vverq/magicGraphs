@@ -1,7 +1,7 @@
 package tests;
 
 import org.junit.*;
-import tests.Reader;
+import utilities.Reader;
 
 import java.io.File;
 
