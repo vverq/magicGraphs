@@ -1,12 +1,13 @@
 package tests;
 
 import algorithms.EulerianPath;
-import org.junit.*;
 import utilities.Reader;
 
 import java.io.File;
 
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
 
 
 public class TestEulerianPath {

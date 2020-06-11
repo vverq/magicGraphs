@@ -2,13 +2,14 @@ package tests;
 
 import graph.Edge;
 import graph.Graph;
-import org.junit.*;
 import utilities.Reader;
 
 import java.io.File;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
 
 public class TestMST {
     private boolean[][] adjacencyMatrix;

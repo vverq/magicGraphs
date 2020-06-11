@@ -1,11 +1,12 @@
 package tests;
 import algorithms.BFS;
-import org.junit.*;
 import utilities.Reader;
 
 import java.io.File;
 
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
 
 public class TestBFS {
     private boolean[][] adjacencyMatrix1;

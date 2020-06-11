@@ -1,11 +1,12 @@
 package tests;
 import algorithms.BipartitenessChecking;
-import org.junit.*;
 import utilities.Reader;
 
 import java.io.File;
 
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
 
 public class TestBipartitenessChecking {
     private boolean[][] adjacencyMatrix1;

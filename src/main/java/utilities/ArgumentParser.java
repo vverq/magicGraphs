@@ -3,8 +3,7 @@ package utilities;
 import java.util.HashMap;
 
 public class ArgumentParser {
-    public static HashMap<String, String> parseArguments(String[] args)
-    {
+    public static HashMap<String, String> parseArguments(String[] args) {
         HashMap<String, String> arguments = new HashMap<>();
         if (args[0].equals("directed")) {
             arguments.put("type", "directed");

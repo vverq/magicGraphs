@@ -1,12 +1,13 @@
 package tests;
 
-import org.junit.*;
 import utilities.Reader;
 
 import java.io.File;
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
 
 
 public class TestComponentSearch {
