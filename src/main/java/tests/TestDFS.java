@@ -10,6 +10,8 @@ import utilities.Reader;
 import java.io.File;
 import java.util.ArrayList;
 
+import static org.junit.Assert.*;
+
 public class TestDFS {
     private boolean[][] adjacencyMatrix1;
     private boolean[][] adjacencyMatrix2;
@@ -31,9 +33,9 @@ public class TestDFS {
         expectedEdges.add(new Edge(0, 1));
         expectedEdges.add(new Edge(1, 3));
         ArrayList<Edge> actualEdges = DFS.DFS(graph, 0);
-//        for (int i = 0; i < actualEdges.size(); i++) {
-//            assertEquals(expectedEdges.get(i), actualEdges.get(i));
-//        }
+        for (int i = 0; i < actualEdges.size(); i++) {
+            assertEquals(expectedEdges.get(i), actualEdges.get(i));
+        }
     }
 
     @Test
@@ -55,8 +57,8 @@ public class TestDFS {
         expectedEdges.add(new Edge(4, 1));
         expectedEdges.add(new Edge(1, 0));
         ArrayList<Edge> actualEdges = DFS.DFS(graph, 0);
-//        for (int i = 0; i < actualEdges.size(); i++) {
-//            assertEquals(expectedEdges.get(i), actualEdges.get(i));
-//        }
+        for (int i = 0; i < actualEdges.size(); i++) {
+            assertEquals(expectedEdges.get(i), actualEdges.get(i));
+        }
     }
 }
