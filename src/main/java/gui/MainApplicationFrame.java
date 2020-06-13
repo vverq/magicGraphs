@@ -7,12 +7,12 @@ import javax.swing.*;
 
 
 public class MainApplicationFrame extends JFrame {
-    MainApplicationFrame(Graph graph, AlgorithmVisualizer algorithmVisualizer) {
+    MainApplicationFrame(Graph graph) {
         setLocationRelativeTo(null);
         setMinimumSize(new Dimension(750,600));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("MagicGraphs");
-        var visualizer = new Visualizer(algorithmVisualizer);
+        var visualizer = new GraphVisualizer(graph);
         this.getContentPane().add(visualizer);
     }
 }

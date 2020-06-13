@@ -14,7 +14,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 public class Program {
-
     public static void main(String[] args) {
         HashMap<String, String> arguments = ArgumentParser.parseArguments(args);
         try {
@@ -33,12 +32,7 @@ public class Program {
                 graph = new UndirectedGraph((boolean[][])result.get(0));
             }
             graph.setWeightMatrix((int[][])result.get(1));
-            AlgorithmVisualizer algorithmVisualizer;
-            if (arguments.get("algorithms").equals("DFS"))
-                algorithmVisualizer = new DFSVisualizer(graph);
-            else
-                algorithmVisualizer = new GraphVisualizer(graph);
-            MainApplicationFrame frame = new MainApplicationFrame(graph, algorithmVisualizer);
+            MainApplicationFrame frame = new MainApplicationFrame(graph);
             frame.pack();
             frame.setVisible(true);
             frame.setExtendedState(Frame.MAXIMIZED_BOTH);
