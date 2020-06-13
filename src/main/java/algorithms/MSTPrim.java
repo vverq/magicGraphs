@@ -4,7 +4,6 @@ import graph.Edge;
 import graph.Graph;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 
 /** Класс, предоставляющий метод построения минимального остовного дерева
  * с помощью алгоритма Прима.

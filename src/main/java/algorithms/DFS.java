@@ -1,9 +1,9 @@
 package algorithms;
 
-import graph.Edge;
-import graph.Graph;
 
-import java.lang.reflect.Array;
+import graph.Graph;
+import graph.Edge;
+
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -17,7 +17,7 @@ public class DFS {
      */
     public static ArrayList<Edge> DFS(Graph graph, int start) {
         Stack<Integer> stack = new Stack<>();
-        ArrayList<Edge> DFSEdges = new ArrayList<>();
+        ArrayList<graph.Edge> DFSEdges = new ArrayList<>();
         stack.push(start);
         int count = graph.getVerticesCount();
         int[] previous = new int[count];
