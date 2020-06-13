@@ -2,9 +2,10 @@ package algorithms;
 
 import graph.Edge;
 import graph.Graph;
+import javafx.util.Pair;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Stack;
 
 /**Класс, предоставляющий метод поиска в глубину.
@@ -16,29 +17,23 @@ public class DFS {
      * @return Массив с ребрами в порядке их нахождения.
      */
     public static ArrayList<Edge> DFS(Graph graph, int start) {
-        Stack<Integer> stack = new Stack<>();
-        ArrayList<Edge> DFSEdges = new ArrayList<>();
-        stack.push(start);
-        int count = graph.getVerticesCount();
-        int[] previous = new int[count];
-        boolean[] markers = new boolean[count];
-        for (int i = 0; i < count; i++) {
-            markers[i] = true;
-            previous[i] = -1;
-        }
+        Stack<Pair<Integer, Integer>> stack = new Stack<>();
+        ArrayList<Edge> trace = new ArrayList<>();
+        stack.push(new Pair<>(-1, start));
+        HashSet<Edge> visitedEdges = new HashSet<>();
         while (!stack.empty()) {
-            int v = stack.pop();
-            if (previous[v] != -1) {
-                DFSEdges.add(new Edge(previous[v], v));
+            Pair<Integer, Integer> current_edge = stack.pop();
+            if (current_edge.getKey() != -1) {
+                trace.add(new Edge(current_edge.getKey(), current_edge.getValue()));
             }
-            if (markers[v]) {
-                for (int i = 0; i < graph.getAdjacencyLists().get(v).size(); ++i) {
-                    stack.push(graph.getAdjacencyLists().get(v).get(i));
-                    previous[graph.getAdjacencyLists().get(v).get(i)] = v;
+            for (int target : graph.getAdjacencyLists().get(current_edge.getValue())) {
+                Edge edge = new Edge(current_edge.getValue(), target);
+                if (!visitedEdges.contains(edge)) {
+                    visitedEdges.add(edge);
+                    stack.push(new Pair<>(current_edge.getValue(), target));
                 }
-                markers[v] = false;
             }
         }
-        return DFSEdges;
+        return trace;
     }
 }
