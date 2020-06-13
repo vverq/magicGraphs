@@ -1,7 +1,9 @@
 package algorithms;
 
+import graph.Edge;
 import graph.Graph;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -11,30 +13,32 @@ public class DFS {
     /** Метод поиска в ширину с использованием стека.
      * @param graph Ориентированный или неориентированный граф.
      * @param start Начальная вершина.
-     * @return Массив с вершинами в порядке их нахождения.
+     * @return Массив с ребрами в порядке их нахождения.
      */
-    public static ArrayList<Integer> DFS(Graph graph, int start) {
+    public static ArrayList<Edge> DFS(Graph graph, int start) {
         Stack<Integer> stack = new Stack<>();
-        ArrayList<Integer> DFSVertices = new ArrayList<>();
+        ArrayList<Edge> DFSEdges = new ArrayList<>();
         stack.push(start);
-        DFSVertices.add(start);
         int count = graph.getVerticesCount();
+        int[] previous = new int[count];
         boolean[] markers = new boolean[count];
         for (int i = 0; i < count; i++) {
             markers[i] = true;
+            previous[i] = -1;
         }
         while (!stack.empty()) {
             int v = stack.pop();
-            if (!DFSVertices.contains(v)) {
-                DFSVertices.add(v);
+            if (previous[v] != -1) {
+                DFSEdges.add(new Edge(previous[v], v));
             }
-            for (int i = 0; i < graph.getAdjacencyLists().get(v).size(); ++i) {
-                if (markers[graph.getAdjacencyLists().get(v).get(i)]) {
+            if (markers[v]) {
+                for (int i = 0; i < graph.getAdjacencyLists().get(v).size(); ++i) {
                     stack.push(graph.getAdjacencyLists().get(v).get(i));
-                    markers[graph.getAdjacencyLists().get(v).get(i)] = false;
+                    previous[graph.getAdjacencyLists().get(v).get(i)] = v;
                 }
+                markers[v] = false;
             }
         }
-        return DFSVertices;
+        return DFSEdges;
     }
 }

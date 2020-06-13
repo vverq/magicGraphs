@@ -1,5 +1,7 @@
 package graph;
 
+import java.util.Objects;
+
 /** Класс ребра.
  */
 public class Edge implements Comparable<Edge>
@@ -7,6 +9,21 @@ public class Edge implements Comparable<Edge>
     private int source;
     private int destination;
     private int weight;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Edge edge = (Edge) o;
+        return source == edge.source &&
+                destination == edge.destination &&
+                weight == edge.weight;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(source, destination, weight);
+    }
 
     /** Инициализирует приватные поля source, destination, weight переданными значениями.
      * @param src Номер вершины, из которой исходит ребро.
