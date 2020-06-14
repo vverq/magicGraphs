@@ -14,27 +14,29 @@ public class DFSVisualizer extends GraphVisualizer {
     private ArrayList<Edge> edges;
     private boolean[][] adjacencyMatrix;
     private ConcurrentLinkedDeque<Edge> paintedEdges = new ConcurrentLinkedDeque<>();
-    private final Timer m_timer = initTimer();
-    private static Timer initTimer()
-    {
-        Timer timer = new Timer("events generator", true);
-        return timer;
-    }
+    private Thread thread;
+    private ArrayList<Edge> sameEdgesWithDifferentDirection = new ArrayList<>();
+
     DFSVisualizer(Graph graph) {
         super(graph);
         adjacencyMatrix = graph.getAdjacencyMatrix();
         edges = DFS.DFS(graph, 0);
-        m_timer.schedule(new TimerTask()
-        {
-            @Override
-            public void run()
-            {
-                if (edges.size() > 0)
-                    paintedEdges.add(edges.remove(0));
+        thread = new Thread(new Runnable() {
+            public void run() {
+                while(true) {
+                    if (edges.size() > 0)
+                        paintedEdges.add(edges.remove(0));
+                    try {
+                        thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
-        }, 0, 2000);
+        });
+        thread.start();
     }
-
+    
     @Override
     public void paint(Graphics g, int centerX, int centerY) {
         super.paint(g, centerX, centerY);
@@ -42,13 +44,14 @@ public class DFSVisualizer extends GraphVisualizer {
         var x = verticesCoordinates.get(0);
         var y = verticesCoordinates.get(1);
         for (Edge edge : paintedEdges) {
-            if (adjacencyMatrix[edge.getSource()][edge.getDestination()]) {
-                super.paintEdgeAsPro((Graphics2D)g, x[edge.getSource()], y[edge.getSource()],
-                        x[edge.getDestination()], y[edge.getDestination()], false, Color.RED);
-            }
-            if (adjacencyMatrix[edge.getDestination()][edge.getSource()]) {
+            super.paintEdgeAsPro((Graphics2D)g, x[edge.getSource()], y[edge.getSource()],
+                    x[edge.getDestination()], y[edge.getDestination()], false, Color.RED);
+            if (sameEdgesWithDifferentDirection.contains(edge)) {
                 super.paintEdgeAsPro((Graphics2D)g, x[edge.getSource()], y[edge.getSource()],
                         x[edge.getDestination()], y[edge.getDestination()], true, Color.RED);
+            }
+            if (adjacencyMatrix[edge.getDestination()][edge.getSource()]) {
+                sameEdgesWithDifferentDirection.add(edge);
             }
         }
     }
