@@ -1,7 +1,13 @@
 package gui;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import java.io.File;
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -14,9 +20,14 @@ public class Visualizer extends JPanel {
         Timer timer = new Timer("events generator", true);
         return timer;
     }
+    public PropertyChangeSupport support;
 
     public Visualizer(AlgorithmVisualizer algorithmVisualizer) {
+        support = new PropertyChangeSupport(this);
         this.algorithmVisualizer = algorithmVisualizer;
+    }
+
+    public void start() {
         m_timer.schedule(new TimerTask()
         {
             @Override
@@ -25,6 +36,7 @@ public class Visualizer extends JPanel {
                 onRedrawEvent();
             }
         }, 0, 100);
+        algorithmVisualizer.start();
     }
 
     private void onRedrawEvent()
@@ -34,7 +46,14 @@ public class Visualizer extends JPanel {
 
     @Override
     public void paint(Graphics g) {
-        super.paint(g);
-        algorithmVisualizer.paint(g, getWidth() / 2, getHeight() / 2);
+        BufferedImage image = (BufferedImage)createImage(
+                getWidth(), getHeight());
+        Graphics2D g2 = image.createGraphics();
+        super.paint(g2);
+        algorithmVisualizer.paint(g2, getWidth() / 2, getHeight() / 2);
+        g.drawImage(image, 0, 0, this);
+        if (!algorithmVisualizer.isFinished()) {
+            support.firePropertyChange("image", null, image);
+        }
     }
 }

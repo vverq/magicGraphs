@@ -16,6 +16,10 @@ public class GraphVisualizer implements AlgorithmVisualizer {
         r = 200;
     }
 
+    public void start() {
+
+    }
+
     ArrayList<Integer[]> getVerticesCoordinates(int centerX, int centerY) {
         var angle = 0.0;
         var x = new Integer[n];
@@ -65,6 +69,11 @@ public class GraphVisualizer implements AlgorithmVisualizer {
         for (var k = 0; k < n; k++) {
             paintNumberOfVertex(g2d, x[k], y[k], k, Color.magenta);
         }
+    }
+
+    @Override
+    public boolean isFinished() {
+        return true;
     }
 
     void paintEdgeAsPro(Graphics2D g2d, int x1, int y1, int x2, int y2, boolean reversed, Color color){

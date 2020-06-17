@@ -6,8 +6,6 @@ import graph.Edge;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class DFSVisualizer extends GraphVisualizer {
@@ -16,16 +14,24 @@ public class DFSVisualizer extends GraphVisualizer {
     private ConcurrentLinkedDeque<Edge> paintedEdges = new ConcurrentLinkedDeque<>();
     private Thread thread;
     private ArrayList<Edge> sameEdgesWithDifferentDirection = new ArrayList<>();
+    private boolean isFinished;
 
     DFSVisualizer(Graph graph) {
         super(graph);
         adjacencyMatrix = graph.getAdjacencyMatrix();
         edges = DFS.DFS(graph, 0);
+        isFinished = false;
+    }
+
+    public void start() {
         thread = new Thread(new Runnable() {
             public void run() {
                 while(true) {
                     if (edges.size() > 0)
                         paintedEdges.add(edges.remove(0));
+                    else {
+                        isFinished = true;
+                    }
                     try {
                         thread.sleep(2000);
                     } catch (InterruptedException e) {
@@ -36,6 +42,8 @@ public class DFSVisualizer extends GraphVisualizer {
         });
         thread.start();
     }
+
+    public boolean isFinished() { return isFinished; }
     
     @Override
     public void paint(Graphics g, int centerX, int centerY) {
