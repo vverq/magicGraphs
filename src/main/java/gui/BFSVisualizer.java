@@ -1,6 +1,6 @@
 package gui;
 
-import algorithms.DFS;
+import algorithms.BFS;
 import graph.Graph;
 import graph.Edge;
 
@@ -8,7 +8,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
-public class DFSVisualizer extends GraphVisualizer {
+public class BFSVisualizer extends GraphVisualizer {
     private ArrayList<Edge> edges;
     private boolean[][] adjacencyMatrix;
     private ConcurrentLinkedDeque<Edge> paintedEdges = new ConcurrentLinkedDeque<>();
@@ -16,10 +16,10 @@ public class DFSVisualizer extends GraphVisualizer {
     private ArrayList<Edge> sameEdgesWithDifferentDirection = new ArrayList<>();
     private boolean isFinished;
 
-    DFSVisualizer(Graph graph) {
+    BFSVisualizer(Graph graph) {
         super(graph);
         adjacencyMatrix = graph.getAdjacencyMatrix();
-        edges = DFS.DFS(graph, 0);
+        edges = BFS.BFS(graph, 0);
         isFinished = false;
     }
 
@@ -44,7 +44,7 @@ public class DFSVisualizer extends GraphVisualizer {
     }
 
     public boolean isFinished() { return isFinished; }
-    
+
     @Override
     public void paint(Graphics g, int centerX, int centerY) {
         super.paint(g, centerX, centerY);

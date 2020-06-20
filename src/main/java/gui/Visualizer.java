@@ -20,14 +20,14 @@ public class Visualizer extends JPanel {
         Timer timer = new Timer("events generator", true);
         return timer;
     }
-    public PropertyChangeSupport support;
+    PropertyChangeSupport support;
 
-    public Visualizer(AlgorithmVisualizer algorithmVisualizer) {
+    Visualizer(AlgorithmVisualizer algorithmVisualizer) {
         support = new PropertyChangeSupport(this);
         this.algorithmVisualizer = algorithmVisualizer;
     }
 
-    public void start() {
+    void start() {
         m_timer.schedule(new TimerTask()
         {
             @Override

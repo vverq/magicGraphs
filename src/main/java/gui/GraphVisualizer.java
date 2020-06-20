@@ -16,9 +16,7 @@ public class GraphVisualizer implements AlgorithmVisualizer {
         r = 200;
     }
 
-    public void start() {
-
-    }
+    public void start() { }
 
     ArrayList<Integer[]> getVerticesCoordinates(int centerX, int centerY) {
         var angle = 0.0;
@@ -40,10 +38,10 @@ public class GraphVisualizer implements AlgorithmVisualizer {
         g.fillOval(x - 4, y - 8, 16, 16);
     }
 
-    private void paintNumberOfVertex(Graphics2D g, int x, int y, int i, Color color) {
+    void paintNumberOfVertex(Graphics2D g, int x, int y, int i, Color color) {
         g.setColor(color);
-        g.setFont(new Font("Arial", Font.BOLD, 18));
-        g.drawString(i + "", x - 16, y + 16);
+        g.setFont(new Font("Arial", Font.BOLD, 20));
+        g.drawString(i + "", x - 20, y + 20);
     }
 
     @Override
@@ -67,7 +65,7 @@ public class GraphVisualizer implements AlgorithmVisualizer {
             }
         }
         for (var k = 0; k < n; k++) {
-            paintNumberOfVertex(g2d, x[k], y[k], k, Color.magenta);
+            paintNumberOfVertex(g2d, x[k], y[k], k, Color.black);
         }
     }
 

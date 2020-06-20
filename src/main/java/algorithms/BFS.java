@@ -1,8 +1,11 @@
 package algorithms;
 
+import graph.Edge;
 import graph.Graph;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 /**Класс, предоставляющий метод поиска в ширину.
  */
@@ -10,26 +13,28 @@ public class BFS {
     /** Метод поиска в ширину с использованием очереди.
      * @param graph Ориентированный или неориентированный граф.
      * @param start Начальная вершина.
-     * @return Массив с вершинами в порядке их нахождения.
+     * @return Массив с ребрами в порядке их нахождения.
      */
-    public static int[] BFS(Graph graph, int start) {
+    public static ArrayList<Edge> BFS(Graph graph, int start) {
         var i = 0;
-        var num = new int[graph.getVerticesCount()];
-        for (var j = 0; j < graph.getVerticesCount(); j++) {
-            num[j] = -1;
-        }
-        var adjacencyLists = graph.getAdjacencyLists();
-        var Q = new ArrayDeque<Integer>();
-        Q.addLast(start);
+        ArrayList<Edge> trace = new ArrayList<>();
+        var Q = new ArrayDeque<Edge>();
+        HashSet<Edge> visitedEdges = new HashSet<>();
+        Q.addLast(new Edge(-1, start));
         while (!Q.isEmpty()) {
             var v = Q.pop();
-            num[v] = i;
+            if (v.getSource() != -1) {
+                trace.add(v);
+            }
             i++;
-            for (Integer w : adjacencyLists.get(v)) {
-                if (!Q.contains(w) && num[w] == -1)
-                    Q.addLast(w);
+            for (int target : graph.getAdjacencyLists().get(v.getDestination())) {
+                Edge edge = new Edge(v.getDestination(), target);
+                if (!visitedEdges.contains(edge)) {
+                    visitedEdges.add(edge);
+                    Q.addLast(edge);
+                }
             }
         }
-        return num;
+        return trace;
     }
 }

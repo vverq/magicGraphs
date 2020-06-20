@@ -38,6 +38,13 @@ public class ArgumentParser {
             System.out.println("Now you can choose only two algorithms: <DFS> or <BFS>");
             System.exit(3);
         }
+        try {
+            arguments.put("gifname", args[3]);
+        }
+        catch (ArrayIndexOutOfBoundsException ex){
+            System.out.println("Input name for gif-file");
+            System.exit(4);
+        }
         return arguments;
     }
 }

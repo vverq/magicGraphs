@@ -36,12 +36,13 @@ public class Program {
             AlgorithmVisualizer algorithmVisualizer;
             if (arguments.get("algorithms").equals("DFS"))
                 algorithmVisualizer = new DFSVisualizer(graph);
+            else if (arguments.get("algorithms").equals("BFS"))
+                algorithmVisualizer = new BFSVisualizer(graph);
             else
                 algorithmVisualizer = new GraphVisualizer(graph);
-            MainApplicationFrame frame = new MainApplicationFrame(graph, algorithmVisualizer);
+            MainApplicationFrame frame = new MainApplicationFrame(graph, algorithmVisualizer, arguments.get("gifname"));
             frame.pack();
             frame.setVisible(true);
-            frame.setExtendedState(Frame.MAXIMIZED_BOTH);
         });
     }
 }
