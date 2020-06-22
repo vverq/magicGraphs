@@ -10,13 +10,13 @@ import java.util.Stack;
 
 /**Класс, предоставляющий метод поиска в глубину.
  */
-public class DFS {
+public class DFS implements IAlgorithm{
     /** Метод поиска в ширину с использованием стека.
      * @param graph Ориентированный или неориентированный граф.
      * @param start Начальная вершина.
      * @return Массив с ребрами в порядке их нахождения.
      */
-    public static ArrayList<Edge> DFS(Graph graph, int start) {
+    public ArrayList<Edge> invoke(Graph graph, int start) {
         Stack<Pair<Integer, Integer>> stack = new Stack<>();
         ArrayList<Edge> trace = new ArrayList<>();
         stack.push(new Pair<>(-1, start));

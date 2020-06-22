@@ -6,7 +6,6 @@ import graph.UndirectedGraph;
 import utilities.Reader;
 import utilities.ArgumentParser;
 
-import java.awt.Frame;
 import java.io.File;
 import java.util.HashMap;
 
@@ -33,13 +32,13 @@ public class Program {
                 graph = new UndirectedGraph((boolean[][])result.get(0));
             }
             graph.setWeightMatrix((int[][])result.get(1));
-            AlgorithmVisualizer algorithmVisualizer;
-            if (arguments.get("algorithms").equals("DFS"))
-                algorithmVisualizer = new DFSVisualizer(graph);
-            else if (arguments.get("algorithms").equals("BFS"))
-                algorithmVisualizer = new BFSVisualizer(graph);
-            else
+            IAlgorithmVisualizer algorithmVisualizer;
+            if (!arguments.get("algorithms").isEmpty()) {
+                algorithmVisualizer = new AlgorithmVisualizer(graph, arguments.get("algorithms"));
+            }
+            else {
                 algorithmVisualizer = new GraphVisualizer(graph);
+            }
             MainApplicationFrame frame = new MainApplicationFrame(graph, algorithmVisualizer, arguments.get("gifname"));
             frame.pack();
             frame.setVisible(true);
