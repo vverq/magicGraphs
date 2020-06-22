@@ -1,19 +1,15 @@
 package gui;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.io.File;
-import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
 
 public class Visualizer extends JPanel {
-    private AlgorithmVisualizer algorithmVisualizer;
+    private IAlgorithmVisualizer algorithmVisualizer;
     private final Timer m_timer = initTimer();
     private static Timer initTimer()
     {
@@ -22,7 +18,7 @@ public class Visualizer extends JPanel {
     }
     PropertyChangeSupport support;
 
-    Visualizer(AlgorithmVisualizer algorithmVisualizer) {
+    Visualizer(IAlgorithmVisualizer algorithmVisualizer) {
         support = new PropertyChangeSupport(this);
         this.algorithmVisualizer = algorithmVisualizer;
     }

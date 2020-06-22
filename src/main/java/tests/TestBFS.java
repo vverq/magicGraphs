@@ -15,6 +15,7 @@ import org.junit.Test;
 public class TestBFS {
     private boolean[][] adjacencyMatrix1;
     private boolean[][] adjacencyMatrix2;
+    private BFS bfs = new BFS();
 
     @Before
     public void setUp(){
@@ -36,7 +37,7 @@ public class TestBFS {
         expectedEdges.add(new Edge(2, 3));
         expectedEdges.add(new Edge(2, 4));
         expectedEdges.add(new Edge(3, 4));
-        ArrayList<Edge> actualEdges = BFS.BFS(graph, 0);
+        ArrayList<Edge> actualEdges = bfs.invoke(graph, 0);
         for (int i = 0; i < actualEdges.size(); i++) {
             assertEquals(expectedEdges.get(i), actualEdges.get(i));
         }
@@ -56,7 +57,7 @@ public class TestBFS {
         expectedEdges.add(new Edge(3, 2));
         expectedEdges.add(new Edge(3, 4));
         expectedEdges.add(new Edge(4, 3));
-        ArrayList<Edge> actualEdges = BFS.BFS(graph, 0);
+        ArrayList<Edge> actualEdges = bfs.invoke(graph, 0);
         for (int i = 0; i < actualEdges.size(); i++) {
             assertEquals(expectedEdges.get(i), actualEdges.get(i));
         }

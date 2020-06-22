@@ -8,7 +8,7 @@ public class ArgumentParser {
         undirected
     }
 
-    enum algorithms {
+    public enum algorithms{
         DFS,
         BFS
     }

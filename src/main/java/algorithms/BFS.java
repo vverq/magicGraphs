@@ -9,13 +9,13 @@ import java.util.HashSet;
 
 /**Класс, предоставляющий метод поиска в ширину.
  */
-public class BFS {
+public class BFS implements IAlgorithm {
     /** Метод поиска в ширину с использованием очереди.
      * @param graph Ориентированный или неориентированный граф.
      * @param start Начальная вершина.
      * @return Массив с ребрами в порядке их нахождения.
      */
-    public static ArrayList<Edge> BFS(Graph graph, int start) {
+    public ArrayList<Edge> invoke(Graph graph, int start) {
         var i = 0;
         ArrayList<Edge> trace = new ArrayList<>();
         var Q = new ArrayDeque<Edge>();

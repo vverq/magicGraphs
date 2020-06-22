@@ -5,7 +5,7 @@ import graph.Graph;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class GraphVisualizer implements AlgorithmVisualizer {
+public class GraphVisualizer implements IAlgorithmVisualizer {
     private Graph graph;
     private int n;
     private int r;
