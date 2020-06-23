@@ -33,8 +33,23 @@ public class Program {
             }
             graph.setWeightMatrix((int[][])result.get(1));
             IAlgorithmVisualizer algorithmVisualizer;
+            // todo тоже тупоо
             if (!arguments.get("algorithms").isEmpty()) {
-                algorithmVisualizer = new AlgorithmVisualizer(graph, arguments.get("algorithms"));
+                if (args.length > 5) {
+                    algorithmVisualizer = new AlgorithmVisualizer(
+                            graph,
+                            arguments.get("algorithms"),
+                            Integer.parseInt(arguments.get("source")),
+                            Integer.parseInt(arguments.get("destination"))
+                    );
+                }
+                else {
+                    algorithmVisualizer = new AlgorithmVisualizer(
+                            graph,
+                            arguments.get("algorithms"),
+                            Integer.parseInt(arguments.get("source"))
+                    );
+                }
             }
             else {
                 algorithmVisualizer = new GraphVisualizer(graph);

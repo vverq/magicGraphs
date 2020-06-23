@@ -8,35 +8,32 @@ import java.util.Stack;
 
 /** Класс, предоставляющий метод поиска кратчайшего пути на графе с использованием алгоритма Дейкстры.
  */
-public class DijkstraAlgorithm {
+public class DijkstraAlgorithm implements IAlgorithm {
     /** Метод находит кратчайшие расстояния от начальной вершины до всех других доступных из нчальной вершин
      * с использованием жадного метода distance. Кратчайший путь от нчальной вершины до конечной строится
      * по массиву Previous.
      * @param graph Ориентированный или неориентированный граф.
-     * @param s Начальная вершина.
-     * @param t Конечная вершина.
+     * @param source Начальная вершина.
+     * @param destination Начальная вершина.
      * @return Массив ребер, представляющий собой кратчайший путь от начальной вершины до конечной,
      * если такого нет, то возвращается null.
      */
-    public static ArrayList<Edge> getShortestPath(Graph graph, int s, int t) {
+    public ArrayList<Edge> invoke(Graph graph, int source, int destination) {
         ArrayList<Edge> r = new ArrayList<>();
         var distances = new int[graph.getVerticesCount()];
         var previous = new int[graph.getVerticesCount()];
-        distance(graph, s, distances, previous);
-        if (distances[t] < Integer.MAX_VALUE) {
+        distance(graph, source, distances, previous);
+        if (distances[destination] < Integer.MAX_VALUE) {
             var stack = new Stack<Integer>();
-            stack.push(t);
-            var v = t;
+            stack.push(destination);
+            var v = destination;
             while(previous[v] != -1) {
                 v = previous[v];
                 stack.push(v);
             }
             int e = stack.size();
             for (var i = 0; i < e; i++) {
-                int j = stack.pop();
-                if (i != j) {
-                    r.add(new Edge(i, j));
-                }
+                r.add(new Edge(i, stack.pop()));
             }
             for (Edge edge: r) {
                 System.out.println(edge.getSource() + "   " + edge.getDestination());

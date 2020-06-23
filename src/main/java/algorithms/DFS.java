@@ -16,7 +16,7 @@ public class DFS implements IAlgorithm{
      * @param start Начальная вершина.
      * @return Массив с ребрами в порядке их нахождения.
      */
-    public ArrayList<Edge> invoke(Graph graph, int start) {
+    public ArrayList<Edge> invoke(Graph graph, int start, int finish) {
         Stack<Pair<Integer, Integer>> stack = new Stack<>();
         ArrayList<Edge> trace = new ArrayList<>();
         stack.push(new Pair<>(-1, start));

@@ -33,7 +33,7 @@ public class TestDFS {
         expectedEdges.add(new Edge(3, 4));
         expectedEdges.add(new Edge(0, 1));
         expectedEdges.add(new Edge(1, 3));
-        ArrayList<Edge> actualEdges = dfs.invoke(graph, 0);
+        ArrayList<Edge> actualEdges = dfs.invoke(graph, 0, 0);
         for (int i = 0; i < actualEdges.size(); i++) {
             assertEquals(expectedEdges.get(i), actualEdges.get(i));
         }
@@ -57,7 +57,7 @@ public class TestDFS {
         expectedEdges.add(new Edge(5, 4));
         expectedEdges.add(new Edge(4, 1));
         expectedEdges.add(new Edge(1, 0));
-        ArrayList<Edge> actualEdges = dfs.invoke(graph, 0);
+        ArrayList<Edge> actualEdges = dfs.invoke(graph, 0, 0);
         for (int i = 0; i < actualEdges.size(); i++) {
             assertEquals(expectedEdges.get(i), actualEdges.get(i));
         }

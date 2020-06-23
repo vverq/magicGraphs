@@ -2,6 +2,7 @@ package gui;
 
 import algorithms.BFS;
 import algorithms.DFS;
+import algorithms.DijkstraAlgorithm;
 import algorithms.IAlgorithm;
 import graph.Edge;
 import graph.Graph;
@@ -15,6 +16,7 @@ public class AlgorithmVisualizer extends GraphVisualizer {
     private HashMap<String, IAlgorithm> algortimsNameClasses = new HashMap<>(){{
         put("BFS", new BFS());
         put("DFS", new DFS());
+        put("Dijkstra", new DijkstraAlgorithm());
     }};
     private ArrayList<Edge> edges;
     private boolean[][] adjacencyMatrix;
@@ -23,11 +25,18 @@ public class AlgorithmVisualizer extends GraphVisualizer {
     private ArrayList<Edge> sameEdgesWithDifferentDirection = new ArrayList<>();
     private boolean isFinished;
 
-    AlgorithmVisualizer(Graph graph, String algorithms) {
+    AlgorithmVisualizer(Graph graph, String algorithms, int source) {
         super(graph);
         adjacencyMatrix = graph.getAdjacencyMatrix();
         isFinished = false;
-        edges = algortimsNameClasses.get(algorithms).invoke(graph, 0);
+        edges = algortimsNameClasses.get(algorithms).invoke(graph, source, 0);
+    }
+
+    AlgorithmVisualizer(Graph graph, String algorithms, int source, int destination) {
+        super(graph);
+        adjacencyMatrix = graph.getAdjacencyMatrix();
+        isFinished = false;
+        edges = algortimsNameClasses.get(algorithms).invoke(graph, source, destination);
     }
 
     public void start() {

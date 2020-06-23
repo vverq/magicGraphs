@@ -10,7 +10,8 @@ public class ArgumentParser {
 
     public enum algorithms{
         DFS,
-        BFS
+        BFS,
+        Dijkstra
     }
 
     public static HashMap<String, String> parseArguments(String[] args) {
@@ -35,15 +36,31 @@ public class ArgumentParser {
         try {
             arguments.put("algorithms", algorithms.valueOf(args[2]).toString());
         } catch (IllegalArgumentException ex) {
-            System.out.println("Now you can choose only two algorithms: <DFS> or <BFS>");
+            System.out.println("Now you can choose only two algorithms: <DFS>, <BFS> or <Dijkstra>");
             System.exit(3);
         }
+        // todo: тупо сделано
         try {
-            arguments.put("gifname", args[3]);
+            arguments.put("source", args[3]);
+            if (arguments.get("algorithms").equals("Dijkstra")) {
+                arguments.put("destination", args[4]);
+            }
+        }
+        catch (ArrayIndexOutOfBoundsException ex) {
+            System.out.println("Input <source> and (if its necessary) <destination> params");
+            System.exit(4);
+        }
+        try {
+            if (arguments.get("algorithms").equals("Dijkstra")) {
+                arguments.put("gifname", args[5]);
+            }
+            else {
+                arguments.put("gifname", args[4]);
+            }
         }
         catch (ArrayIndexOutOfBoundsException ex){
             System.out.println("Input name for gif-file");
-            System.exit(4);
+            System.exit(5);
         }
         return arguments;
     }

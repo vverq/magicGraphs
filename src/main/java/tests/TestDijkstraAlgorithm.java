@@ -13,9 +13,9 @@ import org.junit.Test;
 
 
 public class TestDijkstraAlgorithm {
-
     private boolean[][] adjacencyMatrix1;
     private int[][] weightMatrix1;
+    private DijkstraAlgorithm dijkstraAlgorithm = new DijkstraAlgorithm();
 
     @Before
     public void setUp(){
@@ -32,6 +32,6 @@ public class TestDijkstraAlgorithm {
         ArrayList<Edge> expectedEdges = new ArrayList<>();
         expectedEdges.add(new Edge(1,2));
         expectedEdges.add(new Edge(2,4));
-        assertEquals(expectedEdges,DijkstraAlgorithm.getShortestPath(graph, 0, 4));
+        assertEquals(expectedEdges, dijkstraAlgorithm.invoke(graph, 0, 4));
     }
 }

@@ -15,7 +15,7 @@ public class BFS implements IAlgorithm {
      * @param start Начальная вершина.
      * @return Массив с ребрами в порядке их нахождения.
      */
-    public ArrayList<Edge> invoke(Graph graph, int start) {
+    public ArrayList<Edge> invoke(Graph graph, int start, int finish) {
         var i = 0;
         ArrayList<Edge> trace = new ArrayList<>();
         var Q = new ArrayDeque<Edge>();
