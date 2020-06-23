@@ -1,5 +1,6 @@
 package algorithms;
 
+import graph.Edge;
 import graph.Graph;
 
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.Stack;
 
 /** Класс, предоставляющий метод поиска MAXMIN-пути.
  */
-public class MAXMINPath {
+public class MAXMINPath implements IAlgorithm {
 
     /** Метод поиска MAXMIN-пути, испольующий модификацию алгоритма Дейкстры поиска кратчайшего пути.
      * @param graph Ориентированный или неориентированный граф.
@@ -16,7 +17,7 @@ public class MAXMINPath {
      * @param t Конечная вершина.
      * @return Массив с MAXMIN-путем между начальной и конечной вершинами, если он есть, иначе - null.
      */
-    public static int[] getMAXMINPath(Graph graph, int s, int t) {
+    public ArrayList<Edge> invoke(Graph graph, int s, int t) {
         var distances = new int[graph.getVerticesCount()];
         var previous = new int[graph.getVerticesCount()];
         distance(graph, s, distances, previous);
@@ -28,12 +29,18 @@ public class MAXMINPath {
                 v = previous[v];
                 stack.push(v);
             }
-            var result = new int[stack.size()];
-            var n = stack.size();
-            for (var i = 0; i < n; i++) {
-                result[i] = stack.pop();
+            ArrayList<Edge> r = new ArrayList<>();
+            int size = stack.size();
+            var vert = stack.pop();
+            for (var i = 0; i < size - 1; i++) {
+                var newVert = stack.pop();
+                r.add(new Edge(vert, newVert));
+                vert = newVert;
             }
-            return result;
+            for (Edge e: r) {
+                System.out.println(e.getSource() + "   " + e.getDestination());
+            }
+            return r;
         }
         else {
             return null;

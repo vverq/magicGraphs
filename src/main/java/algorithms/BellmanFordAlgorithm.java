@@ -1,12 +1,14 @@
 package algorithms;
 
+import graph.Edge;
 import graph.Graph;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 /**Класс, предоставляющий метод поиска кратчайшего пути на графе, использующий алгоритм Беллмана-Форда.
  */
-public class BellmanFordAlgorithm {
+public class BellmanFordAlgorithm implements IAlgorithm {
 
     /**С помощью метода distance, используя динамическое
      * программирование, считает кратчайшие расстояния от начальной
@@ -17,10 +19,9 @@ public class BellmanFordAlgorithm {
      *              быть циклов отрицательной длины.
      * @param s Начальная вершина.
      * @param t Конечная вершина.
-     * @return Массив с вершинами в пути по порядку от начальной вершины
-     * до конечной, либо null, если путь не был найден.
+     * @return Массив ребер, либо null, если путь не был найден.
      */
-    public static int[] getShortestPath(Graph graph, int s, int t) {
+    public ArrayList<Edge> invoke(Graph graph, int s, int t) {
         var distances = new int[graph.getVerticesCount()];
         var previous = new int[graph.getVerticesCount()];
         distance(graph, s, distances, previous);
@@ -32,11 +33,18 @@ public class BellmanFordAlgorithm {
                 v = previous[v];
                 stack.push(v);
             }
-            var result = new int[stack.size()];
-            for (var i = 0; i < result.length; i++) {
-                result[i] = stack.pop();
+            ArrayList<Edge> r = new ArrayList<>();
+            int size = stack.size();
+            var vert = stack.pop();
+            for (var i = 0; i < size - 1; i++) {
+                var newVert = stack.pop();
+                r.add(new Edge(vert, newVert));
+                vert = newVert;
             }
-            return result;
+            for (Edge e: r) {
+                System.out.println(e.getSource() + "   " + e.getDestination());
+            }
+            return r;
         }
         else {
             return null;

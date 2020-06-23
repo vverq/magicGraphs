@@ -44,6 +44,12 @@ public class GraphVisualizer implements IAlgorithmVisualizer {
         g.drawString(i + "", x - 20, y + 20);
     }
 
+    void paintWeightOfEdge(Graphics2D g, int x1, int y1, int x2, int y2, int weight, Color color) {
+        g.setColor(color);
+        g.setFont(new Font("Arial", Font.BOLD, 20));
+        g.drawString(weight + "", (x1 + x2) / 2 + 10, (y1 + y2) / 2 + 10);
+    }
+
     @Override
     public void paint(Graphics g, int centerX, int centerY) {
         Graphics2D g2d = (Graphics2D) g;
@@ -54,13 +60,16 @@ public class GraphVisualizer implements IAlgorithmVisualizer {
             paintVertex(g2d, x[i], y[i], Color.BLACK);
         }
         var adjacencyMatrix = graph.getAdjacencyMatrix();
+        var weightMatrix = graph.getWeightMatrix();
         for (var i = 0; i < n; i++) {
             for (var j = i + 1; j < n; j++) {
                 if (adjacencyMatrix[i][j]) {
                     paintEdgeAsPro(g2d, x[i], y[i], x[j], y[j], false, Color.BLACK);
+                    paintWeightOfEdge(g2d, x[i], y[i], x[j], y[j], weightMatrix[i][j], Color.BLACK);
                 }
                 if (adjacencyMatrix[j][i]) {
                     paintEdgeAsPro(g2d, x[j], y[j], x[i], y[i], true, Color.BLACK);
+                    paintWeightOfEdge(g2d, x[j], y[j], x[i], y[i], weightMatrix[j][i], Color.BLACK);
                 }
             }
         }

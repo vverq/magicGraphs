@@ -13,7 +13,7 @@ public class Edge implements Comparable<Edge>
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Edge)) return false;
         Edge edge = (Edge) o;
         return source == edge.source &&
                 destination == edge.destination &&

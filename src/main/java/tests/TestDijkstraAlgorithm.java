@@ -29,9 +29,9 @@ public class TestDijkstraAlgorithm {
     public void test1 (){
         var graph = new graph.DirectedGraph(adjacencyMatrix1);
         graph.setWeightMatrix(weightMatrix1);
-        ArrayList<Edge> expectedEdges = new ArrayList<>();
-        expectedEdges.add(new Edge(1,2));
-        expectedEdges.add(new Edge(2,4));
-        assertEquals(expectedEdges, dijkstraAlgorithm.invoke(graph, 0, 4));
+        var expectedEdges = new Edge[2];
+        expectedEdges[0] = new Edge(0,2);
+        expectedEdges[1] = new Edge(2,4);
+        assertArrayEquals(expectedEdges, dijkstraAlgorithm.invoke(graph, 0, 4).toArray());
     }
 }

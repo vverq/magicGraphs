@@ -1,9 +1,6 @@
 package gui;
 
-import algorithms.BFS;
-import algorithms.DFS;
-import algorithms.DijkstraAlgorithm;
-import algorithms.IAlgorithm;
+import algorithms.*;
 import graph.Edge;
 import graph.Graph;
 
@@ -17,6 +14,8 @@ public class AlgorithmVisualizer extends GraphVisualizer {
         put("BFS", new BFS());
         put("DFS", new DFS());
         put("Dijkstra", new DijkstraAlgorithm());
+        put("BellmanFord", new BellmanFordAlgorithm());
+        put("MAXMINPath", new MAXMINPath());
     }};
     private ArrayList<Edge> edges;
     private boolean[][] adjacencyMatrix;

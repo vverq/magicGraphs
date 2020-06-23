@@ -19,7 +19,6 @@ public class DijkstraAlgorithm implements IAlgorithm {
      * если такого нет, то возвращается null.
      */
     public ArrayList<Edge> invoke(Graph graph, int source, int destination) {
-        ArrayList<Edge> r = new ArrayList<>();
         var distances = new int[graph.getVerticesCount()];
         var previous = new int[graph.getVerticesCount()];
         distance(graph, source, distances, previous);
@@ -31,12 +30,16 @@ public class DijkstraAlgorithm implements IAlgorithm {
                 v = previous[v];
                 stack.push(v);
             }
-            int e = stack.size();
-            for (var i = 0; i < e; i++) {
-                r.add(new Edge(i, stack.pop()));
+            ArrayList<Edge> r = new ArrayList<>();
+            int size = stack.size();
+            var vert = stack.pop();
+            for (var i = 0; i < size - 1; i++) {
+                var newVert = stack.pop();
+                r.add(new Edge(vert, newVert));
+                vert = newVert;
             }
-            for (Edge edge: r) {
-                System.out.println(edge.getSource() + "   " + edge.getDestination());
+            for (Edge e: r) {
+                System.out.println(e.getSource() + "   " + e.getDestination());
             }
             return r;
         }

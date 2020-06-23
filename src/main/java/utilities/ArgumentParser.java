@@ -11,7 +11,9 @@ public class ArgumentParser {
     public enum algorithms{
         DFS,
         BFS,
-        Dijkstra
+        Dijkstra,
+        BellmanFord,
+        MAXMINPath
     }
 
     public static HashMap<String, String> parseArguments(String[] args) {
@@ -36,13 +38,16 @@ public class ArgumentParser {
         try {
             arguments.put("algorithms", algorithms.valueOf(args[2]).toString());
         } catch (IllegalArgumentException ex) {
-            System.out.println("Now you can choose only two algorithms: <DFS>, <BFS> or <Dijkstra>");
+            System.out.println("Now you can choose only five algorithms: <DFS>, <BFS>, <Dijkstra>, <BellmanFord> " +
+                    "or <MAXMINPath>");
             System.exit(3);
         }
         // todo: тупо сделано
         try {
             arguments.put("source", args[3]);
-            if (arguments.get("algorithms").equals("Dijkstra")) {
+            if (arguments.get("algorithms").equals("Dijkstra") ||
+                    arguments.get("algorithms").equals("BellmanFord") ||
+                    arguments.get("algorithms").equals("MAXMINPath")) {
                 arguments.put("destination", args[4]);
             }
         }
@@ -51,7 +56,9 @@ public class ArgumentParser {
             System.exit(4);
         }
         try {
-            if (arguments.get("algorithms").equals("Dijkstra")) {
+            if (arguments.get("algorithms").equals("Dijkstra") ||
+                    arguments.get("algorithms").equals("BellmanFord") ||
+                    arguments.get("algorithms").equals("MAXMINPath")) {
                 arguments.put("gifname", args[5]);
             }
             else {
