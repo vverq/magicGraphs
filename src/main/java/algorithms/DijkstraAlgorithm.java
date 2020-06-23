@@ -1,5 +1,6 @@
 package algorithms;
 
+import graph.Edge;
 import graph.Graph;
 
 import java.util.ArrayList;
@@ -14,9 +15,11 @@ public class DijkstraAlgorithm {
      * @param graph Ориентированный или неориентированный граф.
      * @param s Начальная вершина.
      * @param t Конечная вершина.
-     * @return Массив с кратчайшим путем между начальной и конечной вершинами, если он есть, иначе - null.
+     * @return Массив ребер, представляющий собой кратчайший путь от начальной вершины до конечной,
+     * если такого нет, то возвращается null.
      */
-    public static int[] getShortestPath(Graph graph, int s, int t) {
+    public static ArrayList<Edge> getShortestPath(Graph graph, int s, int t) {
+        ArrayList<Edge> r = new ArrayList<>();
         var distances = new int[graph.getVerticesCount()];
         var previous = new int[graph.getVerticesCount()];
         distance(graph, s, distances, previous);
@@ -28,11 +31,17 @@ public class DijkstraAlgorithm {
                 v = previous[v];
                 stack.push(v);
             }
-            var result = new int[stack.size()];
-            for (var i = 0; i < result.length; i++) {
-                result[i] = stack.pop();
+            int e = stack.size();
+            for (var i = 0; i < e; i++) {
+                int j = stack.pop();
+                if (i != j) {
+                    r.add(new Edge(i, j));
+                }
             }
-            return result;
+            for (Edge edge: r) {
+                System.out.println(edge.getSource() + "   " + edge.getDestination());
+            }
+            return r;
         }
         else {
             return null;
