@@ -93,17 +93,12 @@
 
 ## Визуализация
 Поиск в ширину:  
-<img src="gif/bfs.gif" alt="BFS" weigth=250 height=250 />  
-
+	<img src="gif/bfs.gif" alt="BFS" weigth=250 height=250 />  
 Поиск в глубину:  
-<img src="gif/dfs.gif" alt="DFS" weigth=250 height=250 />  
-
+	<img src="gif/dfs.gif" alt="DFS" weigth=250 height=250 />  
 Поиск кратчашего пути по алгоритму Дейсктры:  
-<img src="gif/dijkstra.gif" alt="Dijkstra" weigth=250 height=250 />   
-
+	<img src="gif/dijkstra.gif" alt="Dijkstra" weigth=250 height=250 />   
 Поиск кратчайшего пути по алгоритму Беллмана-Форда:  
-<img src="gif/ford-bellman.gif" alt="FordBellman" weigth=250 height=250 />   
-
+	<img src="gif/ford-bellman.gif" alt="FordBellman" weigth=250 height=250 />   
 Поиск maxmin пути:  
-<img src="gif/maxminpath.gif" alt="MaxMinPath" weigth=250 height=250 /> 
-	
+	<img src="gif/maxminpath.gif" alt="MaxMinPath" weigth=250 height=250 /> 
