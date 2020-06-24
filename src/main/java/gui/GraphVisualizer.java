@@ -65,11 +65,11 @@ public class GraphVisualizer implements IAlgorithmVisualizer {
             for (var j = i + 1; j < n; j++) {
                 if (adjacencyMatrix[i][j]) {
                     paintEdgeAsPro(g2d, x[i], y[i], x[j], y[j], false, Color.BLACK);
-                    paintWeightOfEdge(g2d, x[i], y[i], x[j], y[j], weightMatrix[i][j], Color.BLACK);
+                    paintWeightOfEdge(g2d, x[i] + 20, y[i], x[j] +20, y[j], weightMatrix[i][j], Color.BLACK);
                 }
                 if (adjacencyMatrix[j][i]) {
                     paintEdgeAsPro(g2d, x[j], y[j], x[i], y[i], true, Color.BLACK);
-                    paintWeightOfEdge(g2d, x[j], y[j], x[i], y[i], weightMatrix[j][i], Color.BLACK);
+                    paintWeightOfEdge(g2d, x[j]-20, y[j], x[i]-20, y[i], weightMatrix[j][i], Color.BLACK);
                 }
             }
         }
