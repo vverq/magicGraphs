@@ -3,15 +3,18 @@
 * [X] научиться рисовать графы  
 * [X] рисовать поиск в глубину  
 * [X] рисовать поиск в ширину
-* [ ] рисовать кратчайшие пути
+* [X] рисовать кратчайшие пути
+* [X] рисовать максмин путь
 
 ##
 **Параметры запуска**:  
-```[undirected\directed] [filename] [DFS\BFS] [gifname]```  
+```[undirected\directed] [filename] [DFS\BFS\Dijkstra\BellmanFord\MAXMINPath] [source] [destination] [gifname]```  
 
 ```[undirected\directed]``` : тип графа (ориентированный или неориентированный соотвественно)  
 ```[filename]``` : имя файла, задающего граф  
-```[DFS\BFS]``` : алгоритм для визуализации (пока доступны только поиски в глубину и ширину)  
+```[DFS\BFS\Dijkstra\BellmanFord\MAXMINPath]``` : алгоритм для визуализации (пока доступны только поиски в глубину и ширину)  
+```[source]``` : начальная вершина  
+```[destination]``` : конечная вершина (аргумент необходим для всех алгоритмов, кроме BFS и DFS)  
 ```[gifname]``` : имя gif-файла с результатом
 
 
@@ -86,8 +89,21 @@
 	2 4 4
 	3 4 5
 
- <img src="graph.jpg" alt="Граф" />
+ <img src="graph.JPG" alt="Граф" weigth=250 height=250 />
 
 ## Визуализация
-  * красивые картинки, гифки
+Поиск в ширину:  
+<img src="gif/bfs.gif" alt="BFS" weigth=250 height=250 />  
+
+Поиск в глубину:  
+<img src="gif/dfs.gif" alt="DFS" weigth=250 height=250 />  
+
+Поиск кратчашего пути по алгоритму Дейсктры:  
+<img src="gif/dijkstra.gif" alt="Dijkstra" weigth=250 height=250 />   
+
+Поиск кратчайшего пути по алгоритму Беллмана-Форда:  
+<img src="gif/ford-bellman.gif" alt="FordBellman" weigth=250 height=250 />   
+
+Поиск maxmin пути:  
+<img src="gif/maxminpath.gif" alt="MaxMinPath" weigth=250 height=250 /> 
 	
